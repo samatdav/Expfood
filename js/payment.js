@@ -1,17 +1,29 @@
 Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
-var payTotal = Number(sessionStorage.cost) + Number(sessionStorage.dCost);
+function num2word(num,words) {
+  num=num%100;
+  if (num>19) { num=num%10; }
+  switch (num) {
+    case 1:  { return(words[0]); }
+    case 2: case 3: case 4:  { return(words[1]); }
+    default: { return(words[2]); }
+  }
+}
+words=Array("рубль", "рубля", "рублей");
+
+var productPay = Number(sessionStorage.cost);
+var payTotal = productPay + Number(sessionStorage.dCost);
 var discPay = Math.round(payTotal* 0.05);
 var payFinal = payTotal - discPay;
 var dCostPay = Number(sessionStorage.dCost);
-$( "#payProducts" ).html( Number(sessionStorage.cost) + ' <span class="payRub"> рублей</span>' );
+$( "#payProducts" ).html( productPay + ' <span class="payRub">' + num2word(productPay,words) + '</span>');
 if(dCostPay > 0) {
-$( "#dCostPay" ).html( dCostPay + ' рублей' );
+$( "#dCostPay" ).html( dCostPay + ' <span class="payRub">' + num2word(dCostPay,words) + '</span>' );
 } else {
   $( "#dCostPay" ).html( '<span class="payFree">Бесплатно!</span>' );
 }
-$( "#discPay" ).html( '- ' + discPay + ' <span class="payRub"> рублей</span>' );
-$( "#payTotal" ).html( payFinal + ' <span class="payRub"> рублей</span>' );
+$( "#discPay" ).html( '- ' + discPay + ' <span class="payRub"> ' + num2word(discPay,words) + '</span>' );
+$( "#payTotal" ).html( payFinal + ' <span class="payRub"> ' + num2word(payFinal,words) + '</span>' );
 
 $( "iframe" ).attr({
   src: "https://money.yandex.ru/embed/small.xml?account=410013085842859&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=white&targets=ExpFood.ru&default-sum="+payFinal+"&successURL=",
@@ -50,3 +62,4 @@ query.find({
 
   }
 });
+

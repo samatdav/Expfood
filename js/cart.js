@@ -12,7 +12,6 @@ function handleParseError(err) {
 
 
 
-
 // query.find().then(function() {
 
 // }, function(err) {
@@ -178,17 +177,16 @@ $(document).on('click', ".increase_count", function(){
 	return newItem;
 });
 
-
 $('#orderBtn').on({
 	"click":function(e){
       
-    
 // $(document).on('click', "#orderBtn", function(){ // Parse
 	if ((totalCost+dCost) < 300) {
 		e.stopPropagation();
 		$('#notmin').css( "display", "block" );
 	}
 	else {
+
 		$('#notmin').css( "display", "none" );
 
 
@@ -361,3 +359,5 @@ $(".cart-del").click(function() {
 // $(".navbar").click(function() {
 // 	$("#xTtWoAedgF").find(".reduce_count").click();
 // });
+
+

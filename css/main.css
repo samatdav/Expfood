@@ -377,3 +377,10 @@ font-size: 16px;
 .popup-description {
 	font-size: 20px;
 }
+
+.popup-rub {
+	font-weight: 400;
+	position: relative;
+	left: 10px;
+	font-size: 30px;
+}
