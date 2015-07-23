@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Доставка продуктов за 1 час</title>
+	<meta name="description" content="Быстрая доставка продуктов по городу одинцово за 50 рублей. Курьер сходит за Вас в магазин и сэкономит Ваше время. ">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <script type="text/javascript" src="js/mobile.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+	<link href="css/css" rel="stylesheet" type="text/css">
+	<link href="css/css(1)" rel="stylesheet" type="text/css">
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/tile.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+	
+
+
+</head>
+<body>
+<div class="page-container">
+
+    <div class="header  navbar-fixed-top">
+			<nav class="navbar container-fluid">
+		
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+					<a href="#"><img id="logo" src="img/logo_400.png" alt="expfood"></a><!-- Express Food -->
+					<div class="header_cat"><span id="first_header">Доставка продуктов за 1 час в <a id="moscow" href="about.html"><u>центре Москвы!</u></a></span></div>
+
+					<!-- <div class="discount">Мы закрылись в Одинцово<br>на неопределенный срок :(</div> -->
+					<a target="_blank" href="https://itunes.apple.com/ru/app/express-food/id997335666?l=ru&ls=1&mt=8"><img class="appstore" src="img/av5.png"></a>
+					
+			  </div>
+  
+                 
+                 <div class="navbar-collapse collapse navbar-right">
+					<ul class="nav navbar-nav">
+					  
+					  <li class=""><a href="about.html" id="about"><button class="btn btn-primary btn-nav"> О нас</button></a></li>
+
+<!-- 					  <li class="shop">
+
+					  		<img src="img/ver2.png">
+					  		Верный
+ -->
+					  </li>
+                      </ul>
+
+
+
+                    <ul class="nav navbar-right cart">
+                      <li class="dropdown">
+                      <!-- <div class="btn-primary">asdd</div> -->
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+					<button type="button" class="btn btn-primary btn-check">
+					  <div class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></div> Корзина
+					</button>
+
+					<span id="cart-number">0</span> 
+					<!-- <div id="total_main"></div> -->
+
+
+
+					</a>
+
+
+					<div class="cart-info dropdown-menu" id="cart-items">
+					<div id="delivery_day">Доставим Вам до двери сегодня до <b id="cart_time_b"></b></div>
+					<div id="cart_white"></div>
+
+					<div class="cart-total">
+						  <table>
+							 <tbody>
+
+							 	<!-- <div class="form-group"> 
+								<label class="ordercomlabel">Ваше имя</label> 
+								<div class="ordercom"> 
+								<input type="text" required value="" class="form-control" name="first_name" placeholder="" id="name">
+							    <p class="help-block text-danger"></p> 
+								</div> 
+								</div>  -->
+
+							 <!-- <tr id="">
+							  <td class="cart-first-col">Продуктов на </td>
+							  <td class="cart-second-col"><b> <span id="grocery-price"> 0</span></b> руб</td>
+							 </tr> -->
+							 <!-- <tr>
+							  <td class="cart-first-col" id="delivery_day">Доставим сегодня до </td>
+							  <td class="cart-second-col"><b id="cart_time_b"></b></td>
+							 </tr> -->
+							 <!-- <tr id="">
+							  <td class="cart-first-col">Стоимость доставки </td>
+							  <td class="cart-second-col"><b> <span id="delivery_cost"> 100</span></b> руб</td>
+							  <td id="plus100" class="hidden"> – 100 руб за каждую 1000 руб <br> + 100 руб за каждые 10 кг </td>
+							 </tr> -->
+							 <!-- <tr id="totalCost">
+							  <td class="cart-first-col">Итого </td>
+							  <td class="cart-second-col"><b> <span id="cart-price"> 100</span></b> руб</td>
+							 </tr> -->
+							 
+							</tbody>
+						  </table>
+						  
+						  <p id="freeDelivery">Бесплатная первая доставка! <!-- <span id="freeDeliveryplus">При заказе до 10 кг.</span> --></p>
+
+						  <button class="checkout_button btn btn-primary" id="orderBtn">Заказать <span id="cototal"><span id="cart-price">100</span> руб</span></button>
+						  <p id="notmin">Извините, минимальная сумма заказа: 300р</p>
+						  									 
+						</div>
+
+						<table class="table">
+							<thead>
+							</thead>
+							<tbody id="ordered-items">
+							</tbody>									
+						</table>
+												
+					</div> 
+			      </li>
+			      
+			     </ul>
+
+			     
+					 
+                    
+					 
+                  </div><!-- /.navbar-collapse -->
+			</nav>		
+		</div>
+		
+	<div class="container-fluid content">
+		<div class="row">
+		    <div class="left-menu">
+				<a href="#" class="cats" id="FruitAndVegetables"><img id="FruitAndVegetablesimg" src="img/types/type1.png"></a>
+				<a href="#" class="cats" id="Drinks"><img id="Drinksimg" src="img/types/type8.png"></a>
+				<a href="#" class="cats" id="Snacks"><img id="Snacksimg" src="img/types/type10.png"></a>
+				<a href="#" class="cats" id="dairy"><img id="dairyimg" src="img/types/type6.png"></a>
+				<a href="#" class="cats" id="meat"><img id="meatimg" src="img/types/type2.png"></a>
+				<a href="#" class="cats" id="confection"><img id="confectionimg" src="img/types/type15.png"></a>
+				<a href="#" class="cats" id="prepack"><img id="prepackimg" src="img/types/type11.png"></a>
+				<a href="#" class="cats" id="Grocery"><img id="Groceryimg" src="img/types/type4.png"></a>
+				<a href="#" class="cats" id="Bakery"><img id="Bakeryimg" src="img/types/type14.png"></a>
+				<a href="#" class="cats" id="alcohol"><img id="alcoholimg" src="img/types/type5.png"></a>
+				<a href="#" class="cats" id="cannedFoods"><img id="cannedFoodsimg" src="img/types/type7.png"></a>
+				<a href="#" class="cats" id="household"><img id="householdimg" src="img/types/type12.png"></a>
+			</div>
+		
+		<div id="item-wrap-inner" class="products-wrap">
+		<img id="mainimage" src="img/main.png">
+		<a href="#top"><img id="mainimage" src="img/mainred.png"></a>
+	  	 </div>
+	 </div>	
+	</div>
+
+<!-- 	<footer>
+		asdfasdf
+	</footer>	 -->	
+	
+</div>
+
+
+
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/cart.js"></script>
+<script type="text/javascript" src="js/categories.js"></script>
+
+<script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', 'UA-56789746-4', 'auto');
+  // ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+<div class="modal fade bs-example-modal-lg" id="item0" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content row">
+    <div class="row">
+      <div class="popup-image">
+      <span class="popup-helper"></span>
+      	<img src="http://expfood.ru/img/products/15.jpg">
+      </div>
+      <div class="popup-name">
+      <p class="popup-title" id="myModalLabel">Картофель Вегетория для жарки 3кг</p>
+      <div class="popup-price">
+      	124 <span class="kop">00</span>
+      </div>
+	  <div class="popup-mass">
+			за <b>400г</b>
+	  </div>  
+	  </div>  	
+  </div>
+  <hr>
+  <div class="row">
+      	<div class="popup-description">
+			<strong>Описание</strong> <br>
+			<div class="description-text">
+Теплые океанические течения и близость Японского моря определяют особый микроклимат широколиственных лесов Дальнего Востока. Во время цветения амурской и маньчжурской лип получают первосортный мед с замечательным вкусом и нежным ароматом
+
+О пользе меда известно с древних времен. Щедрая природа обеспечила нас самым ароматным лекарством, которое помогает при авитаминозе и простуде, головных болях, болезнях желудка и печени.
+
+Наслаждайтесь этим лакомством просто так, дополняйте им воздушную выпечку, золотистые блинчики или творог на завтрак.
+			</div>
+    	</div>
+    	<div class="product_card_props">
+			<div class="product_card_prop_item_title">Энергетическая ценность (ккал/100г.):</div>
+			<div class="product_card_prop_item_value">349.2</div>
+			<div class="product_card_prop_item_title">Жиры (г/100г.):</div>
+			<div class="product_card_prop_item_value">0.3</div>
+			<div class="product_card_prop_item_title">Углеводы (г/100г.):</div>
+			<div class="product_card_prop_item_value">83</div>
+			<div class="product_card_prop_item_title">Бренд:</div>
+			<div class="product_card_prop_item_value">Dr.Oetker</div>
+			<div class="product_card_prop_item_title">Страна производства:</div>
+			<div class="product_card_prop_item_value">Россия</div>
+			<div class="product_card_prop_item_title">Состав продукта:</div>
+			<div class="product_card_prop_item_value">кукурузный крахмал, искусственный ароматизатор ваниль, идентичный натуральному ароматизатор ваниль, пищевые красители: желтый хинолиновый, желтый "солнечный закат"</div>
+			</div>
+		</div>
+    	</div>
+</div>
+</div>

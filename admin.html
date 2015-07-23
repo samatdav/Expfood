@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+	<link href="css/css" rel="stylesheet" type="text/css">
+	<link href="css/css(1)" rel="stylesheet" type="text/css">
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+	<title>Express Food</title>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/tile.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+	
+
+</head>
+<body>
+<div class="page-container">
+<div id="admin"></div>
+<script type="text/javascript">
+	Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
+
+	var Orders = Parse.Object.extend("Orders");
+	var query = new Parse.Query(Orders);
+	// query.equalTo("productsId", "Dp8yQZjG7k");
+	query.find({
+	  success: function(results) {
+	    // alert("Successfully retrieved " + results.length + " orders.");	    
+	    for (var i = 0; i < results.length; i++) { 
+		var object = results[i];
+	      // alert(object.id + ' - ' + object.get('playerName'));
+	      $("#admin").prepend(object.get('userInfo') + object.get('html') + "<br><br><br><br><br>");
+	    }
+	  },
+	  error: function(error) {
+	    alert("Error: " + error.code + " " + error.message);
+	  }
+	});
+
+</script>
+
+
+		
+</div>
+
+<style type="text/css">
+.checkout_button {
+	display: none;
+}
+.page-container {
+	background-color: #faa;
+}
+img {
+	height: 100px;
+}
+.admin-table {
+	border-color: #f00;
+	border-width: 10px;
+	margin-bottom: 50px;
+	/*background-color: #faa;*/
+}
+</style>
+
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

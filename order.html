@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- <meta name="viewport" content="width=1400px, initial-scale=1.0, maximum-scale=1.0" /> -->
+		<!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
+	    <meta charset="utf-8">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+	    <link href="css/css" rel="stylesheet" type="text/css">
+	    <link href="css/css(1)" rel="stylesheet" type="text/css">
+	    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+	    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+
+	    <link rel="stylesheet" type="text/css" href="css/main.css">
+	    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+		<title>Доставка продуктов за 1 час</title>
+		<meta name="description" content="Быстрая доставка продуктов по городу одинцово за 50 рублей. Курьер сходит за Вас в магазин и сэкономит Ваше время. ">
+		<script type="text/javascript" src="js/tile.js"></script>
+		<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+			    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false&language=en"></script>
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+	    <script type="text/javascript" src="js/gmaps.js"></script>
+
+	</head>
+
+	<body>
+
+
+	    
+<div class="page-container">
+
+
+
+<link rel="stylesheet" type="text/css" href="css/order.css"> 
+
+<div class="header headerOrder navbar-fixed-top"> <nav class="navbar fluid-container"> 
+
+<div class="navbar-header"> <a href="index.html"><img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood"> <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood"> </a>
+
+</div> 
+
+<div class="navbar-collapse collapse navbar-right"> 
+</div> </nav> 
+</div> 
+
+<div class="container"> 
+
+<div class="jumbotron content"> 
+
+
+
+
+
+	<div class="form-group">  
+	<label for="inputAddress" class="col-sm-0 control-label">
+	</label> 
+	<div class="col-sm-12" id="order_text"> 
+<!-- 	После заполнения информации снизу, вы сможете оплатить заказ по любой банковской карте и мы доставим Ваш заказ меньше чем через 1 час! -->
+	</div> 
+	</div> 
+
+
+	<div class="form-group"> 
+	<label for="inputName" class="col-sm-3 control-label">Адрес <span class="red">*</span>
+	</label> 
+	<div class="col-sm-9"> 
+	<!-- <div class="input-wrap col-sm-9"><input autofocus id="pac-input" class="controls" type="text" placeholder="Куда доставить?"></div> -->
+	<input type="text" value="" name="city" autofocus class="form-control" placeholder="" id="pac-input">
+	<p class="help-block text-danger"></p> 	
+    <p class="help-block text-danger wrongplace">К сожалению, мы пока не доставляем до Вас. Подробнее Вы можете прочитать в разделе <a href="about.html"><u>О НАС</u></a></p>
+	</div> 
+	</div> 
+
+
+	<div class="form-group"> 
+	<label for="inputName"  class="col-sm-3 control-label">Квартира
+	</label> 
+	<div class="col-sm-9">
+	<input type="text"  value="" required class="form-control" name="flat" placeholder="" id="flat">
+    <p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+
+	<div class="form-group"> 
+	<label for="inputAddress" class="col-sm-3 control-label">Ваше имя <span class="red">*</span>
+	</label> 
+	<div class="col-sm-9"> 
+	<input type="text" required value="" class="form-control" name="first_name" placeholder="" id="name">
+    <p class="help-block text-danger"></p> 
+	</div> 
+	</div> 
+
+	<div class="form-group"> 
+	<label for="inputMobile" required class="col-sm-3 control-label">Номер мобильного <span class="red">*</span>
+	</label> 
+	<div class="col-sm-9"> 
+	<input type="tel" required class="form-control" value="" name="phone" placeholder="" id="phone">
+    <p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+
+	<div class="form-group"> 
+	<label for="inputName"  class="col-sm-3 control-label">Время доставки
+	</label> 
+	<div class="col-sm-9">
+	<select class="form-control chooseTime" id="time">
+
+	</select>
+	<p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+
+	<div class="form-group"> 
+	<label for="inputName"  class="col-sm-3 control-label">Оплатить
+	</label> 
+	<div class="col-sm-9" id="howpay">
+	<label class="radio-inline">
+	  <input type="radio" name="howpay" id="creditcard" value="CreditCard" checked="checked"> Картой сейчас <span class="orderdis">скидка ‒5%</span>
+	</label>
+	<br>
+	<label class="radio-inline">
+	  <input type="radio" name="howpay" id="cash" value="Cash"> Наличными при получении
+	</label>
+    <p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+
+	<div class="form-group"> 
+	<label for="inputName"  class="col-sm-3 control-label">Другие инструкции?
+	</label> 
+	<div class="col-sm-9">
+	<label class="radio-inline">
+	  <input type="radio" name="comment" id="nocomment" value="123" checked="checked"> Нет
+	</label>
+	<br>
+	<label class="radio-inline">
+	  <input type="radio" name="comment" id="yescomment" value="213"> Да
+	</label>
+	<br>
+	<textarea class="form-control" rows="3" placeholder="" id="comment"></textarea>
+    <p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+
+
+
+	<div class="clearfix"></div>
+    <div class="col-lg-12 text-center" id="submitOrder">
+        <div id="success"></div>
+        <input class="hidden" type="submit" value="Register" id="submit_order_data">
+    </div>
+
+
+
+<nav> 
+<ul class="pager"> 
+
+<li class="previous"><a id="backToMain" href="index.html" class="backForth">
+<span aria-hidden="true">&larr;
+</span> Назад</a>
+</li> 
+
+<li id="tt" class="next" data-toggle="tooltip" data-placement="right" title="Tooltip on top">
+<a href="#payment" id="toPay" class="backForth">Оплатить 
+<span aria-hidden="true">&rarr;</span></a>
+</li>
+
+</ul> </nav>
+</div> 
+</div> 
+
+<script type="text/javascript">
+
+
+</script>
+
+
+</div>
+    
+    <div id="map-canvas"></div>
+		
+    <div id="map-words">
+
+    </div>
+	
+
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/cart.js"></script>
+<script type="text/javascript" src="js/categories.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
+
+<script type="text/javascript">
+
+
+</script>
+<script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', 'UA-56789746-4', 'auto');
+  // ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

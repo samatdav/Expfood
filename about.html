@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+  <link href="css/css" rel="stylesheet" type="text/css">
+  <link href="css/css(1)" rel="stylesheet" type="text/css">
+  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/order.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <title>Доставка продуктов за 1 час</title>
+  <meta name="description" content="Быстрая доставка продуктов по городу одинцово за 50 рублей. Курьер сходит за Вас в магазин и сэкономит Ваше время. ">
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+  
+    <style>
+      html, body, #map-canvas {
+        height: 600px;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+// This example creates circles on the map, representing
+// populations in North America.
+
+// First, create an object containing LatLng and population for each city.
+var citymap = {};
+citymap['Moscow'] = {
+  center: new google.maps.LatLng(55.7505, 37.619),
+  population: 2714856
+};
+
+
+var cityCircle;
+
+function initialize() {
+  // Create the map.
+  var mapOptions = {
+    zoom: 10,
+    center: new google.maps.LatLng(55.753854, 37.623539),
+    // mapTypeId: google.maps.MapTypeId.TERRAIN
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Construct the circle for each value in citymap.
+  // Note: We scale the area of the circle based on the population.
+  for (var city in citymap) {
+    var populationOptions = {
+      strokeColor: '#66cc66',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#66cc66',
+      fillOpacity: 0.4,
+      map: map,
+      center: citymap[city].center,
+      radius: 4720
+    };
+    // Add the circle for this city to the map.
+    cityCircle = new google.maps.Circle(populationOptions);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+</head>
+<body>
+  <script type="text/javascript">
+  // Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
+  // var TestObject = Parse.Object.extend("TestObject");
+  // var testObject = new TestObject();
+  // testObject.save({foo: "bar"}).then(function(object) {
+  // alert("yay! it worked");
+  // });
+
+// var user = new Parse.User();
+// user.set("username", "123123me");
+// user.set("password", "m123123y pass");
+// user.set("email", "ema121323il@example.com");
+
+// // other fields can be set just like with Parse.Object
+// user.set("phone", "415-392-0202");
+
+// user.signUp(null, {
+//   success: function(user) {
+//     user.set("AdressField", "hih123ihi");
+//     user.save();
+//     // Hooray! Let them use the app now.
+//   },
+//   error: function(user, error) {
+//     // Show the error message somewhere and let the user try again.
+//     alert("Error: " + error.code + " " + error.message);
+//   }
+// });
+
+  </script>
+<style type="text/css">
+  body {
+    padding-top: 150px;
+  }
+
+
+
+    @media(min-width: 1000px){
+
+        .container {
+        position: absolute;
+        right: 50%;
+        top: 150px;
+        max-width: 50%;
+      }
+      #map-canvas {
+        position: absolute;
+        left: 50%;
+        top: 160px;
+        /*width: calc(100% - 700px);*/
+        width: 50%;
+      }
+    }
+
+      @media(min-width: 1400px){
+      .container {
+        position: absolute;
+        right: 50%;
+        top: 150px;
+        max-width: 50%;
+      }
+      #map-canvas {
+        position: absolute;
+        left: 50%;
+        top: 160px;
+        /*width: calc(100% - 700px);*/
+        width: 670px;
+      }
+      }
+
+</style>
+
+<div class="header navbar-fixed-top"> <nav class="navbar fluid-container"> 
+
+<div class="navbar-header"> <a href="index.html"><img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood"> <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood"> </a>
+</div> 
+
+<div class="navbar-collapse collapse navbar-right"> 
+</div> </nav> 
+</div> 
+<div class="container">
+<div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingZero">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+          Где вы доставляете? 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
+      <div class="panel-body">
+        На данный момент мы доставляем только в центре Москвы: внутри третьего транспортного кольца. Точную зону доставки Вы можете посмотреть справа на карте (Зеленый круг в центре).
+
+      </div>
+      
+    </div>
+  </div>
+
+<!--   <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Как работает ExpressFood?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        На сайте нашей компании предоставлен весь спектр товаров. Вы составляете для себя корзину продуктов, при ошибке и изменении решения о покупке того или иного товара, его в любой момент можно удалить. После того, как корзина готова, самое время оплатить заказ, чтоб мы могли передать его курьеру, Вы нажимаете на кнопку оплаты и переходите на страницу, где вам необходимо ввести реквизиты кредитной карты, с которой будет списана сумма заказа. По окончании оплаты, Ваша часть закончена и мы приступаем к работе, менее чем за час, Вам будет доставлен заказ и Вы сможете им насладиться.
+      </div>
+    </div>
+  </div> -->
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Откуда вы берете продукты?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Мы покупаем их в магазинах "Перекресток" рядом с Вами. После получения заказа, курьер идет в ближайший к Вам "Перекресток" и покупает требуемые товары. У нас нет складов.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         Когда мы работаем?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Ваши заказы принимаются в любое время. Однако, доставляем мы с 9 утра до 11 вечера.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+         Как оплачивать в ExpressFood?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+        Вы можете оплатить заказ сразу по карте, либо наличными при получении заказа.
+      </div>
+    </div>
+  </div>
+<!--   <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingEx">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEx" aria-expanded="false" aria-controls="collapseEx">
+         Как юридически происходят взаимотношения?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseEx" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEx">
+      <div class="panel-body">
+        Мы предлагаем услугу по смешанному договору: посреднические услуги (агентский договор (гл. 52 ГК РФ) от своего от своего имени, но за счет принципала) по покупке товара и услугу (ст. 39 ГК РФ) по доставке товара из сети магазинов Верный нашим принципалам. 
+        Иными словами: покупаем в сети магазинов Верный и доставляем принципалу. 
+        Данные отношения не регулируются ст.  26.1 Закона о защите потребителей, т.к. мы не выступаем продавцами.
+      </div>
+    </div>
+  </div> -->
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFive">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+         Сколько стоит доставка?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+      <div class="panel-body">
+        Доставка стоит 100 рублей. Однако, за каждые 10кг стоимость доставки увеличивается на 100 рублей.
+      </div>
+    </div>
+  </div>
+<!--     <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Насколько дороже у вас, чем в магазине? 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Около 5%. Мы стараемся не зарабатывать с помощью наценки на товар. Однако, мы не можем сделать такие же цена как в магазине, так как банк берет с нас комиссию после Вашей оплаты по карте и цены в магазиноах часто меняются и мы часто покупаем некоторые продукты дороже.
+      </div>
+    </div>
+  </div> -->
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingSix">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+         Как связаться в случае появления дополнительных вопросов?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+      <div class="panel-body">
+        По всем Вашим вопросам, пожалуйста звоните с 12 утра до 24 вечера на номер +7 925 044 74 37 <br>
+        Или пишите на email expfood@yandex.ru
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <nav> 
+<ul class="pager"> 
+
+<li class="previous"><a id="backToMain" href="index.html" class="backForth">
+<span aria-hidden="true">&larr;</span> Назад</a>
+</li> 
+
+
+</ul> 
+</nav>
+
+
+
+</div>
+</div>
+<div  id="map-canvas"></div>
+<script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', 'UA-56789746-4', 'auto');
+  // ga('send', 'pageview');
+
+</script>
+</body>
+</html>
