@@ -38,15 +38,19 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 				user.save();
 
 
-				sessionStorage.userInfo = document.getElementById('name').value + '<br>' + document.getElementById('phone').value + '<br>' + document.getElementById('pac-input').value + '<br>' + document.getElementById('flat').value + '<br>' + document.getElementById('time').value + '<br>';
+				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Адрес: ' +  document.getElementById('pac-input').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>';
+
 
 
 
 					if ($('#creditcard').is(':checked')) { //кредитка
+						sessionStorage.userInfo += 'Оплата: картой';
 						window.location = "payment.html";
+
 					}
 
 					if ($('#cash').is(':checked')) { //наличные
+						sessionStorage.userInfo += 'Оплата: наличными';
 						window.location = "success.html";
 					}
 
@@ -64,6 +68,23 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 			  }
 	    
 			});
+
+				// $('#name').change(function() {
+				// 	// alert($(this).val());
+	  	//     		query.equalTo("FirstName", "ffff");
+				// 	query.find({
+				//   success: function(results) {
+				//     alert("Successfully retrieved " + results.length + " scores.");
+				//     for (var i = 0; i < results.length; i++) {
+				//       var object = results[i];
+				//       alert(object.id + ' - ' + object.get('phone'));
+				//     }
+				//   },
+				//   error: function(error) {
+				//     alert("Error: " + error.code + " " + error.message);
+				//   }
+				// 	});
+				// });
 
 			
 
@@ -102,23 +123,7 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 
 
 
-				// $('#name').change(function() {
-				// 	alert($(this).val());
-	  	//     		query.equalTo("FirstName", $(this).val());
-				// 	query.find({
-				//   success: function(results) {
-				//     alert("Successfully retrieved " + results.length + " scores.");
-				//     // Do something with the returned Parse.Object values
-				//     for (var i = 0; i < results.length; i++) {
-				//       var object = results[i];
-				//       alert(object.id + ' - ' + object.get('phone'));
-				//     }
-				//   },
-				//   error: function(error) {
-				//     alert("Error: " + error.code + " " + error.message);
-				//   }
-				// 	});
-				// });
+
 
 			// $('#phone').bind('input', function() { 
 	  //   		query.equalTo("phone", $(this).val());
@@ -140,9 +145,46 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 		// alert("You are not logged in");
 		window.location = "index.html";
 	}
+// $('#name').change(function() {
+$('#name').val().length;
+
+// function allow() {
+window.setInterval(function(){
+	if ($('#name').val().length * $('#pac-input').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
+		$( "#toPay" ).css( "opacity", "1" );
+	} else {
+		$( "#toPay" ).css( "opacity", "0.5" );
+	}
+}, 1000);
+
+$('input').change(function() {
+	if ($('#name').val().length * $('#pac-input').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
+		$( "#toPay" ).css( "opacity", "1" );
+	} else {
+		$( "#toPay" ).css( "opacity", "0.5" );
+	}
+});
+
+$( "#toPay" ).click(function( event ) {
+	if ($('#name').val().length * $('#pac-input').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
+		$( "#toPay" ).css( "opacity", "1" );
+	} else {
+		$( "#toPay" ).css( "opacity", "0.5" );
+		event.stopPropagation();	
+		$( "#fillall" ).css( "display", "block" );
+	}
+});
 
 
+// }
+// allow();
 
+$('#name').change(function() {
+	});
+
+// window.setInterval(function(){
+//   allow();
+// }, 1000);
 
 $(document).on('click', ".checkout_button", function(){
 	var time = updateClock();	

@@ -235,6 +235,7 @@ tr {
 	position: relative;
 	left: -25px;
 	/*top: 3px;*/
+	outline: none;
 }
 
 .btn-check:hover {
@@ -247,20 +248,7 @@ tr {
 	border-color: #E44C00;
 }
 
-.cart-del {
-	color: #f00 !important;
-	display: none;
-	font-size: 14px  !important;
 
-}
-
-.glyphicon-remove {
-	position: relative;
-	top: 2px;
-}
-.cart-del:hover {
-	color: #f00 !important;
-}
 
 .ordered-item:hover .cart-del { 
 	display:block; 
@@ -383,4 +371,95 @@ font-size: 16px;
 	position: relative;
 	left: 10px;
 	font-size: 30px;
+}
+.cart-change {
+	color: #36778d !important;
+	font-size: 20px;
+	position: absolute;
+	left: 360px;
+	margin-top: 10px;
+	display: none;
+	opacity: 0.8;
+}
+tr:hover  .cart-change {
+	color: #36778d !important;
+	display: block;
+}
+
+.cart-change:hover {
+	opacity: 1;
+}
+.cart-add {
+	/*margin-top: 50px;*/
+}
+
+.cart-min {
+	/*padding-top: 80px;*/
+	margin-top: 30px;
+}
+
+td .quantity {
+	width: 30px !important;
+}
+
+.cart-del {
+	position: absolute;
+	color: #f00 !important;
+	display: none;
+	font-size: 54px  !important;
+	left: 460px;
+	font-weight: 300;
+	font-family: Open Sans;
+	margin-top: -10px;
+
+}
+
+tr:hover .cart-del {
+	/*display: block;*/
+}
+
+tr .cart-del:hover {
+	color: #f00 !important;
+}
+
+table tbody tr td .price,
+table tbody tr td .quantity,
+table tbody tr td .total  {
+	width: 40px !important;
+}
+
+/*.popup-min {
+	background-color: #FF5600;
+	width: 50px;
+	float: left;
+}
+.popup-min:hover {
+	background-color: #E44C00;
+}*/
+.popup-num {
+	margin-top: 30px;
+	height: 50px;
+	text-align: center;
+	font-size: 30px;
+
+}
+.popup-add {
+	margin-top: 10px;
+	width: 100%;
+	height: 50px;
+	font-size: 20px;
+	font-family: sans-serif;
+	color: #fff;
+}
+
+.popup-success {
+	text-align: center;
+	color: #181;
+	font-size: 22px;
+	margin-top: 10px;
+	display: none;
+
+}
+.popup-suc {
+	font-weight: 700;
 }

@@ -9,7 +9,20 @@ function handleParseError(err) {
 }
 
 
-
+$(document).ready(function() {
+	$(".popup-num").keydown(function(event) {
+		// Allow only backspace and delete
+		if ( event.keyCode == 46 || event.keyCode == 8 ) {
+			// let it happen, don't do anything
+		}
+		else {
+			// Ensure that it is a number and stop the keypress
+			if (event.keyCode < 48 || event.keyCode > 57 ) {
+				event.preventDefault();	
+			}	
+		}
+	});
+});
 
 
 // query.find().then(function() {
@@ -29,10 +42,15 @@ if (!sessionStorage.mass) {
 if (!sessionStorage.total) {
 	sessionStorage.total = 0;
 }
-var ids = [];
-var counts = [];
 
-// alert(dCost);
+if (sessionStorage["ids"]) {
+	ids = JSON.parse(sessionStorage["ids"]);
+	counts = JSON.parse(sessionStorage["counts"]);
+} else {
+	var ids = [];
+	var counts = [];
+}
+
 
 var currentUser = Parse.User.current();
 if (currentUser) {
@@ -116,22 +134,29 @@ $(document).on('click', ".increase_count", function(){
 	// 	return value; 
 	// });
 
-	var idIndex = ids.indexOf($(this).closest('.product').attr('id'));
-	if (idIndex >= 0) {
-		counts[idIndex] += 1;
-	} else {
-		ids.push($(this).closest('.product').attr('id'));
-		counts.push(1);
-	}
+	// var idIndex = ids.indexOf($(this).closest('.product').attr('id'));
+	// if (idIndex >= 0) {
+	// 	counts[idIndex] += 1;
+	// } else {
+	// 	ids.push($(this).closest('.product').attr('id'));
+	// 	counts.push(1);
+	// }
+	// sessionStorage["ids"] = JSON.stringify(ids);
+	// sessionStorage["counts"] = JSON.stringify(counts);
 // alert($(this).closest('.product').attr('id'));
 	newItem = (
 				'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
 					'<td class="image"> <span class="helper"></span>'+ $(this).closest('.product').find('img')[0].outerHTML + '</td>' +
 					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+ 
-					// '<br>' + '<a href="#" class="cart-del"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="cart-del-txt"> Удалить</span></a>'+'</td>'  +
-					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
+					'<span class="mass hidden">'+$(this).closest('.product').find('.product-howmuch').html()+'</span>' +
+					'<td class="price"><span class="priceShow">'+parseFloat($(this).closest('.product').find('.product-price').html())+'</span><span class="kop">00</span></td>' +
 					'<td class="quantity"> x '+Number(sessionStorage[theId])+'</td>' +
-					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(Number(sessionStorage[theId]))).toFixed(2)+' &#8381; </td>'+
+					'<td class="total"> = <span class="totalShow">'+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(Number(sessionStorage[theId]))).toFixed(0)+ '<span class="kop">00</span></span>'+
+					'<a href="#" class="cart-change cart-add"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><span class="cart-del-txt"> Добавить</span></a>'  +
+					'<a href="#" class="cart-change cart-min"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="cart-del-txt"> Убрать</span></a>' +
+					'<a href="#" class="cart-change cart-del">×</a>' +
+					'</td>'+
+					
 				'</tr>');
 
 	
@@ -144,12 +169,32 @@ $(document).on('click', ".increase_count", function(){
 	if (Number(sessionStorage.count) >= 10) {
 		$('#cart-number').css( "width", "37px" );
 	}
-	var itemId = $(this).closest('.product');
+	var itemId = $(this).closest('.product').attr('id');
 	// if (value > 1) {
-		$("#cart-"+ itemId.attr('id')).remove();
+		$("#cart-"+ itemId).remove();
 	// }
 
 	$("#ordered-items").prepend(newItem);
+
+	// for (i = 0; i < ids.length; i++) { 
+	// 	for (j = 0; j < json.length; i++) {
+	// 	    if (json[j].objectId = ids[i]) { 
+	// 	    	var id = json[j].id;
+	// 	    	var id = json[j].id;
+	// 	    	break; 
+	// 	    }
+	// 	}	
+	// 	$("#ordered-items").prepend(
+	// 			'<tr class="ordered-item" id="cart-'+ids[i]+'"> '+
+	// 				'<td class="image"> <span class="helper"></span>'+ $(this).closest('.product').find('img')[0].outerHTML + '</td>' +
+	// 				'<td class="name">'+$(this).closest('.product').find('.product-name').html()+ 
+	// 				'<br>' + '<a href="#" class="cart-del"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="cart-del-txt"> Удалить</span></a>'+'</td>'  +
+	// 				'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
+	// 				'<td class="quantity"> x '+Number(sessionStorage[theId])+'</td>' +
+	// 				'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(Number(sessionStorage[theId]))).toFixed(2)+' &#8381; </td>'+
+	// 			'</tr>');
+
+	// }
 	
 	
 
@@ -162,14 +207,14 @@ $(document).on('click', ".increase_count", function(){
 	if (dCost < 0) {
 		dCost = 0;
 	}
-	$('#delivery_cost').html(dCost);
-	if (dCost != basedCost) {
-		$('#plus100').removeClass( "hidden" ).addClass( "visible" );
-	}
+	// $('#delivery_cost').html(dCost);
+	// if (dCost != basedCost) {
+	// 	$('#plus100').removeClass( "hidden" ).addClass( "visible" );
+	// }
 
 
-	$('#total_main').html((totalCost + dCost) + '  &#8381;');
-	$('#grocery-price').html(totalCost);
+	// $('#total_main').html((totalCost + dCost) + '  &#8381;');
+	// $('#grocery-price').html(totalCost);
 	$('#cart-price').html(totalCost);
 
 	sessionStorage.cart = $("#ordered-items").html();
@@ -255,19 +300,28 @@ $(document).on('click', ".reduce_count", function(){
 				'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
 					'<td class="image"> <span class="helper"></span>'+ $(this).closest('.product').find('img')[0].outerHTML + '</td>' +
 					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+ 
-					// '<br>' + '<a href="#" class="cart-del"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="cart-del-txt"> Удалить</span></a>'+'</td>'  +
-					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
+					'<span class="mass hidden">'+$(this).closest('.product').find('.product-howmuch').html()+'</span>' +
+					'<td class="price"><span class="priceShow">'+parseFloat($(this).closest('.product').find('.product-price').html())+'</span><span class="kop">00</span></td>' +
 					'<td class="quantity"> x '+Number(sessionStorage[theId])+'</td>' +
-					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(Number(sessionStorage[theId]))).toFixed(2)+' &#8381; </td>'+
+					'<td class="total"> = <span class="totalShow">'+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(Number(sessionStorage[theId]))).toFixed(0)+ '<span class="kop">00</span></span>'+
+					'<a href="#" class="cart-change cart-add"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><span class="cart-del-txt"> Добавить</span></a>'  +
+					'<a href="#" class="cart-change cart-min"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="cart-del-txt"> Убрать</span></a>' +
+					'<a href="#" class="cart-change cart-del">×</a>' +
+					'</td>'+
+					
 				'</tr>');
 
 
-	var itemId = $(this).closest('.product');
+
+	var itemId = $(this).closest('.product').attr('id');
 
 	var idIndex = ids.indexOf($(this).closest('.product').attr('id'));
 	counts[idIndex] -= 1;
 
-	$("#cart-"+ itemId.attr('id')).remove();
+	sessionStorage["ids"] = JSON.stringify(ids);
+	sessionStorage["counts"] = JSON.stringify(counts);
+
+	$("#cart-"+ itemId).remove();
 
 
 	if (sessionStorage[theId] <= 0) {
@@ -356,8 +410,151 @@ $(".cart-del").click(function() {
 });
 
 
-// $(".navbar").click(function() {
-// 	$("#xTtWoAedgF").find(".reduce_count").click();
+$("#ordered-items").on('click', '.cart-add', function() {
+	var str = $(this).closest('tr').attr('id');
+	var theId = str.substring(5);
+	var thePrice = Number($(this).closest('tr').find('.priceShow').html());
+
+	sessionStorage.count = Number(sessionStorage.count)+1;
+	$('#cart-number').html(Number(sessionStorage.count));
+	sessionStorage[theId] = Number(sessionStorage[theId])+1;
+	$(this).closest('tr').find('.quantity').html('x ' + sessionStorage[theId]);
+	$(this).closest('tr').find('.totalShow').html((thePrice * Number(sessionStorage[theId]))+ '<span class="kop">00</span>');
+	sessionStorage.mass = parseFloat(sessionStorage.mass) + parseFloat($(this).closest('tr').find('.mass').html());
+	totalCost = totalCost + thePrice;
+	totalCost = Math.round(totalCost);
+	sessionStorage.total = totalCost;
+	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
+	$('#cart-price').html(totalCost);
+	
+	if (dCost < 0) {
+		dCost = 0;
+	}
+	if (Number(sessionStorage.count) >= 10) {
+		$('#cart-number').css( "width", "37px" );
+	}
+	if ($('#'+theId).length === 0) { 
+	} else { 
+		$('#'+theId).find('.item_count').html(sessionStorage[theId])
+	}
+
+	sessionStorage.cart = $("#ordered-items").html();
+});
+
+
+$("#ordered-items").on('click', '.cart-min', function() {
+	var str = $(this).closest('tr').attr('id');
+	var theId = str.substring(5);
+	var thePrice = Number($(this).closest('tr').find('.priceShow').html());
+
+	sessionStorage.count = Number(sessionStorage.count)-1;
+	$('#cart-number').html(Number(sessionStorage.count));
+	sessionStorage[theId] = Number(sessionStorage[theId])-1;
+	$(this).closest('tr').find('.quantity').html('x ' + sessionStorage[theId]);
+	$(this).closest('tr').find('.totalShow').html((thePrice * Number(sessionStorage[theId]))+ '<span class="kop">00</span>');
+	sessionStorage.mass = parseFloat(sessionStorage.mass) - parseFloat($(this).closest('tr').find('.mass').html());
+	totalCost = totalCost - thePrice;
+	totalCost = Math.round(totalCost);
+	sessionStorage.total = totalCost;
+	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
+	$('#cart-price').html(totalCost);
+	
+	if (dCost < 0) {
+		dCost = 0;
+	}
+	if (Number(sessionStorage.count) <= 9) {
+		$('#cart-number').css( "width", "30px" );
+	}
+	if (Number(sessionStorage.count) <= 0) {
+		$('#cart-number').css( "display", "none" );
+	}
+	if ($('#'+theId).length === 0) { 
+	} else { 
+		$('#'+theId).find('.item_count').html(sessionStorage[theId]);
+	}
+
+	if (Number(sessionStorage[theId]) <= 0) {
+		$(this).closest('tr').remove();
+		if ($('#'+theId).length === 0) { 
+		} else { 
+			$('#'+theId).find('.reduce_count').removeClass( "visible" ).addClass( "hidden" );
+			$('#'+theId).find('.item_count').removeClass( "visible" ).addClass( "hidden" );
+		}
+	}
+
+	sessionStorage.cart = $("#ordered-items").html();
+
+});
+
+$("#ordered-items").on('click', '.cart-del', function() {
+	var str = $(this).closest('tr').attr('id');
+	var theId = str.substring(5);
+	var thePrice = Number($(this).closest('tr').find('.priceShow').html());
+	sessionStorage.count = Number(sessionStorage.count)-Number(sessionStorage[theId]);
+	$('#cart-number').html(Number(sessionStorage.count));
+	sessionStorage.mass = parseFloat(sessionStorage.mass) - (parseFloat($(this).closest('tr').find('.mass').html() * Number(sessionStorage[theId])));
+	
+	totalCost = totalCost - (thePrice * Number(sessionStorage[theId]));
+	totalCost = Math.round(totalCost);
+	sessionStorage.total = totalCost;
+	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
+	$('#cart-price').html(totalCost);
+	
+	if (dCost < 0) {
+		dCost = 0;
+	}
+	if (Number(sessionStorage.count) <= 9) {
+		$('#cart-number').css( "width", "30px" );
+	}
+	if (Number(sessionStorage.count) <= 0) {
+		$('#cart-number').css( "display", "none" );
+	}
+	
+	$(this).closest('tr').remove();
+	if ($('#'+theId).length === 0) { 
+	} else { 
+		$('#'+theId).find('.reduce_count').removeClass( "visible" ).addClass( "hidden" );
+		$('#'+theId).find('.item_count').html(sessionStorage[theId]);
+		$('#'+theId).find('.item_count').removeClass( "visible" ).addClass( "hidden" );
+	}
+	
+	sessionStorage[theId] = 0;
+	sessionStorage.cart = $("#ordered-items").html();
+
+});
+
+// $(document).on('click', ".popup-add", function(){
+// 	$(this).closest('.modal').find('.popup-num').val();
+
+
+// 	var str = $(this).closest('.modal').attr('id');
+// 	var theId = str.substring(4);
+// 	var thePrice = parseInt($(this).closest('.modal').find('.popup-price').html());
+
+// 	sessionStorage.count = Number(sessionStorage.count)+1;
+// 	$('#cart-number').html(Number(sessionStorage.count));
+// 	sessionStorage[theId] = Number(sessionStorage[theId])+1;
+// 	$(this).closest('tr').find('.quantity').html('x ' + sessionStorage[theId]);
+// 	$(this).closest('tr').find('.totalShow').html((thePrice * Number(sessionStorage[theId]))+ '<span class="kop">00</span>');
+// 	sessionStorage.mass = parseFloat(sessionStorage.mass) + parseFloat($(this).closest('tr').find('.mass').html());
+// 	totalCost = totalCost + thePrice;
+// 	totalCost = Math.round(totalCost);
+// 	sessionStorage.total = totalCost;
+// 	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
+// 	$('#cart-price').html(totalCost);
+	
+// 	if (dCost < 0) {
+// 		dCost = 0;
+// 	}
+// 	if (Number(sessionStorage.count) >= 10) {
+// 		$('#cart-number').css( "width", "37px" );
+// 	}
+// 	if ($('#'+theId).length === 0) { 
+// 	} else { 
+// 		$('#'+theId).find('.item_count').html(sessionStorage[theId])
+// 	}
+
+// 	sessionStorage.cart = $("#ordered-items").html();
 // });
 
 

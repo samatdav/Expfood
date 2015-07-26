@@ -1,6 +1,7 @@
 var geocoder;
 var map;
 var components={};
+var okplace = 1;
 function initialize() {
 
   var markers = [];
@@ -75,10 +76,12 @@ function codeAddress() {
       if( google.maps.geometry.spherical.computeDistanceBetween(enteredloc, centerloc) < 4800 )
             {
               $( ".wrongplace" ).css( "display", "none" );
+              okplace = 1;
             }
             else
             {
                 $( ".wrongplace" ).css( "display", "block" );
+                okplace = 0;
             }
     } else {
       // alert('Пожалуйста, введите свой адрес сверху страницы и нажмите Enter');

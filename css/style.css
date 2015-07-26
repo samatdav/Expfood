@@ -210,7 +210,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
    text-transform: uppercase;
    box-shadow:none;
    border-radius:0px;
-   transition:all 0.4s ease 0s;
+   /*transition:all 0.4s ease 0s;*/
 }
 /*.btn:hover
 {
@@ -244,6 +244,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 	color: white;
 	font-family: sans-serif;
 	font-weight: 600; 
+	outline: none;
 }
 
 .product .action div .add:hover {
@@ -260,6 +261,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 	width: 27px;
 	color: white;
 	font-weight: 800; 
+	outline: none;
 }
 
 .item_count {
@@ -635,7 +637,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 	.navbar .nav.cart > li > a span
 	{
-		padding:9px 8px;
+		padding:9px 9px;
 		border-radius:6px;
 		font-weight:400px;
 		font-family:Montserrat;
@@ -2670,7 +2672,7 @@ td.image img
     vertical-align: middle;
 }
 td.name {
-	width: 250px;
+	width: 200px;
 	font-size: 16px !important;
 }
 .cart-info.dropdown-menu, .cart-info.dropdown-menu .table tbody
@@ -2688,6 +2690,7 @@ td.name {
 {
 	border:none;
 	border-bottom:1px solid #eee;
+	min-width: 60px;
 }
 
 .cart-info.dropdown-menu
