@@ -379,7 +379,7 @@ function updateClock() {
 
 	} 
 	if (h < 8){
-		$("#cart_time_b").html('12:00');
+		$("#cart_time_b").html('10:00');
 	}
 	
 

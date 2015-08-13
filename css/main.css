@@ -1,5 +1,6 @@
 body {
 	padding-top: 75px;
+	/*overflow-y:none !important;*/
 }
 
 .tile-1 .product-wrap {

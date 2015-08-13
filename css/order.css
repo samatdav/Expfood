@@ -48,6 +48,17 @@
         width: 345px;
 }
 
+/*#house {
+	margin-right: 100px;
+}*/
+
+#flatlab {
+	margin-left: 44px;
+	margin-right: 20px;
+}
+.twoad {
+	width: 120px !important;
+}
 
 .content {
 	padding-top: 50px;

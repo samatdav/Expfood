@@ -3460,6 +3460,7 @@ var json = [
         "createdAt": "2015-05-31T19:36:34.593Z",
         "description": "",
         "objectId": "WtxoJaKluM",
+        "id": 303,
         "price": 114,
         "product_img": "http://expfood.ru/img/products/303.jpg",
         "product_name": "Вода Фруто Няня, 5л",

@@ -17,6 +17,9 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 		    if (user.get("AdressField") != null ) {
 		    	document.getElementById('pac-input').value = user.get("AdressField");
 		    }
+		    if (user.get("house") != null ) {
+		    	document.getElementById('house').value = user.get("house");
+		    }
 		    if (user.get("flat") != null ) {
 		    	document.getElementById('flat').value = user.get("flat");
 		    }
@@ -30,6 +33,7 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 				user.set("FirstName", document.getElementById('name').value);
 				user.set("phone", document.getElementById('phone').value);
 				user.set("AdressField", document.getElementById('pac-input').value);
+				user.set("house", document.getElementById('house').value);
 				user.set("flat", document.getElementById('flat').value);
 				user.set("howpay", $("input[name=howpay]:checked").val());
 				user.set("comment", document.getElementById('comment').value);
@@ -38,7 +42,7 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 				user.save();
 
 
-				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Адрес: ' +  document.getElementById('pac-input').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>';
+				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Улица: ' +  document.getElementById('pac-input').value + '<br>' +'Дом: ' +  document.getElementById('house').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>' + 'Стоимость: ' + (Number(sessionStorage.cost) + Number(sessionStorage.dCost)) + '<br>';
 
 
 
@@ -223,11 +227,26 @@ var d = new Date();
 var h = d.getHours();
 var m = d.getMinutes();
 
-$(".chooseTime").append("<option>Сегодня до "+(h+1)+":"+m+"</option>");
+//9-22
 
-for (h+1; h < 23; h++) {
-	$(".chooseTime").append("<option>Сегодня "+(h+1)+":00"+" - "+(h+2)+":00"+"</option>");
+if (h > 8 && h < 23) { // now
+	$(".chooseTime").append("<option>Сегодня до "+(h+1)+":"+m+"</option>");
+	for (h+1; h < 22; h++) {
+		$(".chooseTime").append("<option>Сегодня "+(h+1)+":00"+" - "+(h+2)+":00"+"</option>");
+	}
+} else { //later
+	if (h >= 23) {
+		for (i = 8; i < 22; h++) {
+			$(".chooseTime").append("<option>Завтра "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
+		}
+	} else {
+		for (i = 8; i < 22; h++) {
+			$(".chooseTime").append("<option>Завтра "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
+		}
+	}
 }
+
+
 
 
 $('#creditcard').click(function() {

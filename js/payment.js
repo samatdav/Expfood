@@ -18,7 +18,7 @@ var payFinal = payTotal - discPay;
 var dCostPay = Number(sessionStorage.dCost);
 $( "#payProducts" ).html( productPay + ' <span class="payRub">' + num2word(productPay,words) + '</span>');
 if(dCostPay > 0) {
-$( "#dCostPay" ).html( dCostPay + ' <span class="payRub">' + num2word(dCostPay,words) + '</span>' );
+  $( "#dCostPay" ).html( '+' + dCostPay + ' <span class="payRub">' + num2word(dCostPay,words) + '</span>' );
 } else {
   $( "#dCostPay" ).html( '<span class="payFree">Бесплатно!</span>' );
 }

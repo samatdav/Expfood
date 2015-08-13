@@ -4,10 +4,17 @@ var components={};
 var okplace = 1;
 function initialize() {
 
+var options = {
+  types: ['(cities)'],
+  componentRestrictions: {country: "us"}
+ };
+
   var markers = [];
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
+
+
 
   // var defaultBounds = new google.maps.LatLngBounds(
   //     new google.maps.LatLng(55.668495, 37.280803),
@@ -16,6 +23,8 @@ function initialize() {
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
+
+  var autocomplete = new google.maps.places.Autocomplete(input, options);
   // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   var searchBox = new google.maps.places.SearchBox(input);
@@ -131,41 +140,6 @@ function inputAddress() {
 // });
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
-
-    $(document).ready(function() {
-      $( "document" ).mousedown(function() {
-        alert( "Handler for .mousedown() called." );
-      });
-    });
-
-  // window.setInterval(function(){
-  //   $(document).ready(function() {
-  //     $('.pac-container').click(function () {
-  //         alert('asfsdfsdfsdf');
-  //         // codeAddress();
-  //     }); 
-  //   });
-  // }, 1000);
-
-$( "#pac-input" ).on( 'click', '.pac-container', function () {
-alert( 'WORKS!' );
-});
-
-// inputAddress();
-
-
-$("#logo_text").click(function () {      alert('asfsdfsdfsdf');      });
-
-// window.setInterval(function(){
-//   $('.logo').click(function () {
-//     // codeAddress();
-//     alert('SFD');
-//   });
-// }, 1000);
 
 
 
