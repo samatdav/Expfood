@@ -25,7 +25,7 @@
 	    for (var i = 0; i < results.length; i++) { 
 		var object = results[i];
 	      // alert(object.id + ' - ' + object.get('playerName'));
-	      $("#admin").prepend(object.get('userInfo') + object.get('html') + "<br><br><br><br><br>");
+	      $("#admin").prepend(object.get('userInfo') + "Оплата: " + object.get('payment') + object.get('html') + "<br><br><br><br><br>");
 	    }
 	  },
 	  error: function(error) {

@@ -55,7 +55,7 @@
 
 <div class="jumbotron content"> 
 
-
+<div class="orderheader"> Информация для доставки</div>
 
 
 
@@ -69,19 +69,19 @@
 
 
 	<div class="form-group"> 
-	<label for="inputName" class="col-sm-3 control-label">Улица <!-- <span class="red">*</span> -->
+	<label for="inputName" class="col-sm-3 control-label">Адрес <!-- <span class="red">*</span> -->
 	</label> 
 	<div class="col-sm-9"> 
 	<!-- <div class="input-wrap col-sm-9"><input autofocus id="pac-input" class="controls" type="text" placeholder="Куда доставить?"></div> -->
 	<input type="text" value="" name="city" autofocus class="form-control" placeholder="Улица" id="pac-input">
 	<p class="help-block text-danger"></p> 	
-    <p class="help-block text-danger wrongplace">К сожалению, мы пока не доставляем до Вас. Подробнее Вы можете прочитать в разделе <a href="about.html"><u>О НАС</u></a></p>
+    <p class="help-block text-danger wrongplace">К сожалению, мы пока не доставляем по Вашему адресу. Подробнее Вы можете прочитать в разделе <a href="about.html"><u>О НАС</u></a></p>
 	</div> 
 	</div> 
 
 
 	<div class="form-group"> 
-	<label for="inputName"  class="col-sm-3 control-label">Дом
+	<label for="inputName"  class="col-sm-3 control-label">
 	</label> 
 	<div class="col-sm-9 form-inline">
 	<!-- <input type="text"  value="" required class="form-control" name="flat" placeholder="" id="flat"> -->
@@ -89,7 +89,7 @@
 	    <input type="text" class="form-control twoad" id="house" placeholder="Дом">
 	  </div>
 	  <div class="form-group inline">
-	   <label for="exampleInputEmail2" id="flatlab">Квартира</label>
+	   <label for="exampleInputEmail2" id="flatlab"></label>
 	    <input type="email" class="form-control twoad" id="flat" placeholder="Квартира">
 	  </div>
     <p class="help-block text-danger"></p>
@@ -116,7 +116,7 @@
 	</div> 
 
 	<div class="form-group"> 
-	<label for="inputMobile" required class="col-sm-3 control-label">Номер мобильного <!-- <span class="red">*</span> -->
+	<label for="inputMobile" required class="col-sm-3 control-label">Контактный номер <!-- <span class="red">*</span> -->
 	</label> 
 	<div class="col-sm-9"> 
 	<input type="tel" required class="form-control" value="" name="phone" placeholder="" id="phone">
@@ -137,20 +137,7 @@
 	</div> 
 
 
-	<div class="form-group"> 
-	<label for="inputName"  class="col-sm-3 control-label">Оплатить
-	</label> 
-	<div class="col-sm-9" id="howpay">
-	<label class="radio-inline">
-	  <input type="radio" name="howpay" id="creditcard" value="CreditCard" checked="checked"> Картой сейчас <span class="orderdis">скидка ‒5%</span>
-	</label>
-	<br>
-	<label class="radio-inline">
-	  <input type="radio" name="howpay" id="cash" value="Cash"> Наличными при получении
-	</label>
-    <p class="help-block text-danger"></p>
-	</div> 
-	</div> 
+
 
 
 	<div class="form-group"> 
@@ -190,7 +177,7 @@
 </li> 
 
 <li id="tt" class="next" data-toggle="tooltip" data-placement="right" title="Tooltip on top">
-<a href="#payment" id="toPay" class="backForth">Оплатить 
+<a href="payment.html" id="toPay" class="backForth">Оплата
 <span aria-hidden="true">&rarr;</span></a>
 </li>
 

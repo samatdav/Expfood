@@ -293,11 +293,59 @@ td .image {
 }
 
 .popup-image {
-	width: 50%;
-	padding: 10px;
+	width: 60%;
 	float: left;
 	text-align: center;
 	vertical-align: middle;
+
+
+}
+
+#cattop {
+	position: fixed;
+	width: 130px;
+	height: 100%;
+	background-color: #66cc66;
+	opacity: 0.1;
+	top: 0;
+	left: 0;
+	display: none;
+
+}
+
+#clicktop {
+	position: fixed;
+	width: 300px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;	
+	opacity: 0.5;
+	z-index: 1;
+}
+#texttop {
+	position: fixed;
+	left: 15px;
+	top: 70px;
+	font-size: 18px;
+	font-size: sans-serif;
+	color: #282;
+	font-weight: 600;
+	display: none;
+	/*opacity: 0.5;*/
+}
+#clicktop:hover + #cattop {
+	opacity: 0.3;
+}
+
+
+
+.popimg {
+/*  object-fit: none; 
+  object-position: center; 
+  height: 100px;
+  width: 100px;*/
+
 
 }
 .popup-helper {
@@ -307,13 +355,21 @@ td .image {
 }
 
 .popup-image img {
-max-width: 90%;
-max-height: 300px;
+	/*object-fit: cover;*/
+margin: 0px;
+max-width: 94%;
+
+  outline: 15px solid white;
+  outline-offset: -15px;
+/*
+height: 100%;
+width: 100%;*/
 }
 .popup-name {
-	width: 50%;
-	padding: 30px;
+	width: 40%;
 	float: left;
+	margin-top: 30px;
+	padding-right: 30px;
 }
 
 .popup-title {
@@ -340,13 +396,16 @@ max-height: 300px;
 .popup-description {
 	float: left;
 	padding: 30px;
-	width: 50%;
+	width: 60%;
+	padding-top: 0;
+	padding-left: 50px;
 }
 
 .product_card_props {
-	width: 50%;
+	width: 40%;
 	padding: 30px;
 	float: left;
+	padding-top: 0;
 }
 
 .product_card_prop_item_title {

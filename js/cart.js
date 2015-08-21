@@ -77,15 +77,10 @@ if (currentUser) {
 	$('#freeDelivery').css('display', 'block');
 }
 // alert(dCost);
-dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
-if (dCost < 0) {
-	dCost = 0;
-}
 
-$('#delivery_cost').html(dCost);
-if (dCost != basedCost) {
-	$('#plus100').removeClass( "hidden" ).addClass( "visible" );
-}
+
+
+
 if (sessionStorage.cart) {
 	$("#ordered-items").prepend(sessionStorage.cart);
 }
@@ -203,10 +198,7 @@ $(document).on('click', ".increase_count", function(){
 	totalCost = Math.round(totalCost);
 
 
-	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
-	if (dCost < 0) {
-		dCost = 0;
-	}
+
 	// $('#delivery_cost').html(dCost);
 	// if (dCost != basedCost) {
 	// 	$('#plus100').removeClass( "hidden" ).addClass( "visible" );
@@ -346,15 +338,8 @@ $(document).on('click', ".reduce_count", function(){
 
 	totalCost = Math.round(totalCost);
 
-	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
-	if (dCost < 0) {
-		dCost = 0;
-	}
-	$('#delivery_cost').html(dCost);
 
-	if (dCost = basedCost) {
-		$('#plus100').removeClass( "visible" ).addClass( "hidden" );
-	}
+
 
 	$('#total_main').html((totalCost + dCost) + '  &#8381;');
 	$('#grocery-price').html(totalCost);
@@ -389,7 +374,7 @@ function updateClock() {
 updateClock(); // initial call
 
 $("a[href='#top']").click(function() {
-  $("html, body").animate({ scrollTop: 0 }, "slow");
+  $("html, body").animate({ scrollTop: 0 }, "fast");
   return false;
 });
 
@@ -424,12 +409,9 @@ $("#ordered-items").on('click', '.cart-add', function() {
 	totalCost = totalCost + thePrice;
 	totalCost = Math.round(totalCost);
 	sessionStorage.total = totalCost;
-	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
 	$('#cart-price').html(totalCost);
 	
-	if (dCost < 0) {
-		dCost = 0;
-	}
+
 	if (Number(sessionStorage.count) >= 10) {
 		$('#cart-number').css( "width", "37px" );
 	}
@@ -456,12 +438,9 @@ $("#ordered-items").on('click', '.cart-min', function() {
 	totalCost = totalCost - thePrice;
 	totalCost = Math.round(totalCost);
 	sessionStorage.total = totalCost;
-	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
 	$('#cart-price').html(totalCost);
 	
-	if (dCost < 0) {
-		dCost = 0;
-	}
+
 	if (Number(sessionStorage.count) <= 9) {
 		$('#cart-number').css( "width", "30px" );
 	}
@@ -497,12 +476,9 @@ $("#ordered-items").on('click', '.cart-del', function() {
 	totalCost = totalCost - (thePrice * Number(sessionStorage[theId]));
 	totalCost = Math.round(totalCost);
 	sessionStorage.total = totalCost;
-	dCost = (Math.floor(sessionStorage.mass / 10 ) - Math.floor(sessionStorage.total / 1000)) * 100  + basedCost;
 	$('#cart-price').html(totalCost);
 	
-	if (dCost < 0) {
-		dCost = 0;
-	}
+
 	if (Number(sessionStorage.count) <= 9) {
 		$('#cart-number').css( "width", "30px" );
 	}
@@ -558,3 +534,35 @@ $("#ordered-items").on('click', '.cart-del', function() {
 // });
 
 
+// window.onscroll = function () { // при скролле показывать и прятать блок
+// 		if ( window.pageYOffset > 1000 ) {
+// 			$('#cattop').css('display', 'block');
+// 		} else {
+// 			$('#cattop').css('display', 'block');
+// 		}
+// 	};
+// $(document).ready(function(){ 
+
+// $('body').scroll(function(){
+// 		if ( window.pageYOffset > 100 ) {
+// 			$('#cattop').css('display', 'block');
+// 		} else {
+// 			$('#cattop').css('display', 'none');
+// 		}
+// 		console.log()
+// 	});
+// });
+
+
+$(document).scroll(function() {
+  var y = $(this).scrollTop();
+  if (y > 3000) {
+    $('#cattop').css('display', 'block');
+    $('#clicktop').css('display', 'block');
+    $('#texttop').css('display', 'block');
+  } else {
+    $('#cattop').css('display', 'none');
+    $('#clicktop').css('display', 'none');
+    $('#texttop').css('display', 'none');
+  }
+});

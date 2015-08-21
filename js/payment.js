@@ -1,5 +1,6 @@
 Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
+
 function num2word(num,words) {
   num=num%100;
   if (num>19) { num=num%10; }
@@ -30,6 +31,20 @@ $( "iframe" ).attr({
 });
 
 
+$('#creditcard').click(function() {
+    $( "#discPay" ).html( '- ' + discPay + ' <span class="payRub"> ' + num2word(discPay,words) + '</span>' );
+    $( "#payTotal" ).html( payFinal + ' <span class="payRub"> ' + num2word(payFinal,words) + '</span>' );
+    $( ".next" ).html( '<iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/small.xml?account=410013085842859&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=white&targets=expfood&default-sum='+payFinal+'&successURL=" width="195" height="54"></iframe>' );
+});
+
+$('#cash').click(function() {
+    $( "#discPay" ).html( '- 0 <span class="payRub"> рублей </span>' );
+    $( "#payTotal" ).html( payTotal + ' <span class="payRub"> ' + num2word(payTotal,words) + '</span>' );
+    $( ".next" ).html( '<a href="success.html" id="toPay" class="backForth">Оплатить <span aria-hidden="true">&rarr;</span></a>' );
+});
+
+
+
 var Orders = Parse.Object.extend("Orders");
 var query = new Parse.Query(Orders);
 query.equalTo("objectId", sessionStorage.cOrder);
@@ -39,6 +54,7 @@ query.find({
     // Do something with the returned Parse.Object values
     object = results[0];
     object.set("userInfo", sessionStorage.userInfo);
+    object.set("payment", "card");
     object.save();
   },
   error: function(error) {
@@ -56,6 +72,7 @@ query.find({
     // Do something with the returned Parse.Object values
     object = results[0];
     object.set("userInfo", sessionStorage.userInfo);
+    object.set("payment", "Credit Card");
     object.save();
   },
   error: function(error) {

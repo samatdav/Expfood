@@ -47,16 +47,16 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 
 
 
-					if ($('#creditcard').is(':checked')) { //кредитка
-						sessionStorage.userInfo += 'Оплата: картой';
-						window.location = "payment.html";
+					// if ($('#creditcard').is(':checked')) { //кредитка
+					// 	sessionStorage.userInfo += 'Оплата: картой';
+					// 	window.location = "payment.html";
 
-					}
+					// }
 
-					if ($('#cash').is(':checked')) { //наличные
-						sessionStorage.userInfo += 'Оплата: наличными';
-						window.location = "success.html";
-					}
+					// if ($('#cash').is(':checked')) { //наличные
+					// 	sessionStorage.userInfo += 'Оплата: наличными';
+					// 	window.location = "success.html";
+					// }
 
 
 					

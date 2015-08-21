@@ -10,6 +10,13 @@
 	height: 100px;
 }
 
+.orderheader {
+	font-size: 40px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+
 .logo {
 	padding: 10px;
 	/*position: relative;*/
@@ -57,7 +64,7 @@
 	margin-right: 20px;
 }
 .twoad {
-	width: 120px !important;
+	width: 155px !important;
 }
 
 .content {

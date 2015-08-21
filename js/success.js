@@ -10,6 +10,7 @@ query.find({
     // Do something with the returned Parse.Object values
     object = results[0];
     object.set("userInfo", sessionStorage.userInfo);
+    object.set("payment", "cash");
     object.save();
   },
   error: function(error) {
@@ -27,6 +28,7 @@ query.find({
     // Do something with the returned Parse.Object values
     object = results[0];
     object.set("userInfo", sessionStorage.userInfo);
+    object.set("payment", "Cash");
     object.save();
   },
   error: function(error) {
