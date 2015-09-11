@@ -58,16 +58,28 @@ body {
 	}
 }*/
 
-@media(max-width: 1260px){
+/*td .image img{
+	cursor: default !important;
+	z-index: -10000;
+}*/
+.image {
+	cursor: default !important;
+	/*z-index: 10000;*/
+}
+
+@media(max-width: 1320px){
 	.appstore {
 		display: none;
 	}
 
 }
 
-@media(max-width: 1070px){
+@media(max-width: 1170px){
 	#first_header {
 		display: none;
+	}
+	.appstore {
+		display: block;
 	}
 }
 
@@ -306,7 +318,7 @@ td .image {
 	width: 130px;
 	height: 100%;
 	background-color: #66cc66;
-	opacity: 0.1;
+	opacity: 0;
 	top: 0;
 	left: 0;
 	display: none;

@@ -4,33 +4,24 @@ var components={};
 var okplace = 1;
 function initialize() {
 
-var options = {
-  types: ['(cities)'],
-  componentRestrictions: {country: "us"}
- };
 
   var markers = [];
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
-
-
-  // var defaultBounds = new google.maps.LatLngBounds(
-  //     new google.maps.LatLng(55.668495, 37.280803),
-  //     new google.maps.LatLng(55.668495, 37.280803));
-  // map.fitBounds(defaultBounds);
+ var options = {
+  types: ['(cities)'],
+  componentRestrictions: {country: "us"}
+ };
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
 
   var autocomplete = new google.maps.places.Autocomplete(input, options);
-  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   var searchBox = new google.maps.places.SearchBox(input);
 
-  // Listen for the event fired when the user selects an item from the
-  // pick list. Retrieve the matching places for that item.
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     var place = searchBox.getPlaces()[0];
 

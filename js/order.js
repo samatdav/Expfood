@@ -227,7 +227,7 @@ var d = new Date();
 var h = d.getHours();
 var m = d.getMinutes();
 
-//9-22
+//9-23
 
 if (h > 8 && h < 23) { // now
 	$(".chooseTime").append("<option>Сегодня до "+(h+1)+":"+m+"</option>");
@@ -236,12 +236,12 @@ if (h > 8 && h < 23) { // now
 	}
 } else { //later
 	if (h >= 23) {
-		for (i = 8; i < 22; h++) {
+		for (i = 8; i < 22; i++) {
 			$(".chooseTime").append("<option>Завтра "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
 		}
 	} else {
-		for (i = 8; i < 22; h++) {
-			$(".chooseTime").append("<option>Завтра "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
+		for (i = 8; i < 22; i++) {
+			$(".chooseTime").append("<option>Сегодня "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
 		}
 	}
 }
