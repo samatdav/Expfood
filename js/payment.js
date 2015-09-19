@@ -40,7 +40,7 @@ $('#creditcard').click(function() {
 $('#cash').click(function() {
     $( "#discPay" ).html( '- 0 <span class="payRub"> рублей </span>' );
     $( "#payTotal" ).html( payTotal + ' <span class="payRub"> ' + num2word(payTotal,words) + '</span>' );
-    $( ".next" ).html( '<a href="success.html" id="toPay" class="backForth">Оплатить <span aria-hidden="true">&rarr;</span></a>' );
+    $( ".next" ).html( '<a href="success.html" id="toPay" class="backForth">Завершить <span aria-hidden="true">&rarr;</span></a>' );
 });
 
 

@@ -1,7 +1,8 @@
 Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
 	var currentUser = Parse.User.current();
-	if (currentUser) {
+
+	if (currentUser) { //person is logged
 	    var User = Parse.Object.extend("User");
 		var query = new Parse.Query(User);
 		query.get(currentUser.id, {
@@ -24,10 +25,6 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 		    	document.getElementById('flat').value = user.get("flat");
 		    }
 
-		    if (user.get("comment") != null ) {
-		    	document.getElementById('comment').value = user.get("comment");
-		    }
-
 		    $(document).on('click', "#toPay", function(){
 				// alert(currentUser);
 				user.set("FirstName", document.getElementById('name').value);
@@ -36,33 +33,12 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 				user.set("house", document.getElementById('house').value);
 				user.set("flat", document.getElementById('flat').value);
 				user.set("howpay", $("input[name=howpay]:checked").val());
-				user.set("comment", document.getElementById('comment').value);
 				user.set("freeDelivery", 0);				
 
 				user.save();
 
 
 				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Улица: ' +  document.getElementById('pac-input').value + '<br>' +'Дом: ' +  document.getElementById('house').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>' + 'Стоимость: ' + (Number(sessionStorage.cost) + Number(sessionStorage.dCost)) + '<br>';
-
-
-
-
-					// if ($('#creditcard').is(':checked')) { //кредитка
-					// 	sessionStorage.userInfo += 'Оплата: картой';
-					// 	window.location = "payment.html";
-
-					// }
-
-					// if ($('#cash').is(':checked')) { //наличные
-					// 	sessionStorage.userInfo += 'Оплата: наличными';
-					// 	window.location = "success.html";
-					// }
-
-
-					
-
-					
-
 				});
 			  },
 			  error: function(object, error) {
@@ -73,96 +49,67 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 	    
 			});
 
-				// $('#name').change(function() {
-				// 	// alert($(this).val());
-	  	//     		query.equalTo("FirstName", "ffff");
-				// 	query.find({
-				//   success: function(results) {
-				//     alert("Successfully retrieved " + results.length + " scores.");
-				//     for (var i = 0; i < results.length; i++) {
-				//       var object = results[i];
-				//       alert(object.id + ' - ' + object.get('phone'));
-				//     }
-				//   },
-				//   error: function(error) {
-				//     alert("Error: " + error.code + " " + error.message);
-				//   }
-				// 	});
-				// });
 
-			
-
-			// $('#phone').focus(function() {
-			//     // turn on timer
-			//     startTimer();
-			// }).blur(function() {
-			//     // turn off timer
-			//     endTimer();
-			// });
-
-			// var lastValue = "",
-			//     $timer = $('#phone'),
-			//     timerCheckCount = 0,
-			//     checkInputChange = function() {
-			//         timerCheckCount += 1;
-			//         if (lastValue !== $timer.val()) {
-			//             $timer.next().stop(true, true).fadeIn(0).html('[timer detected change (timer has fired ' + timerCheckCount + ' times!]: ' + $timer.val()).fadeOut(2000);
-			//             lastValue = $timer.val();
-			//         }
-			//     },
-			//     timer = undefined,
-			//     startTimer = function() {
-			//         timer = setInterval(checkInputChange, 200); // check input field every 200 ms (1/5 sec)
-			//     },
-			//     endTimer = function() {
-			//         clearInterval(timer);
-			//         timerCheckCount = 0;
-			//     };
-
-			// setInterval(function(){ console.log($('#phone').val()); }, 1000);
-
-			// $('#phone').on('input', function() { 
-			//     console.log($('#phone').val());
-			// });
-
-
-
-
-
-			// $('#phone').bind('input', function() { 
-	  //   		query.equalTo("phone", $(this).val());
-			// 	query.first({
-			// 	  success: function(object) {
-			// 	    alert('suc');
-			// 	  },
-			// 	  error: function(error) {
-			// 	    alert("Error: " + error.code + " " + error.message);
-			// 	  }
-			// 	});
-			// });
-
-
+	$('.orderlogin').html('Выйти');
+	$(".orderlogin").attr("href", "#");
+	$(document).on('click', ".orderlogin", function(){
+		// $('.orderlogin').html('Вход / Регистрация');
+		Parse.User.logOut();
+		location.reload();
+	});
 				    
 
 	    
-	} else {
+	} else { //person not logged
+
+		if (localStorage.FirstName != undefined) {
+		    	document.getElementById('name').value = localStorage.FirstName;
+		}
+		if (localStorage.phone != undefined) {
+		    	document.getElementById('phone').value = localStorage.phone;
+		}
+		if (localStorage.AdressField != undefined) {
+				okplace = 1;
+		    	document.getElementById('pac-input').value = localStorage.AdressField;
+		}
+		if (localStorage.house != undefined) {
+		    	document.getElementById('house').value = localStorage.house;
+		}
+		if (localStorage.flat != undefined) {
+		    	document.getElementById('flat').value = localStorage.flat;
+		}
+
+
+		    $(document).on('click', "#toPay", function(){
+				// alert(currentUser);
+				localStorage.FirstName = document.getElementById('name').value;
+				localStorage.phone = document.getElementById('phone').value;
+				localStorage.AdressField = document.getElementById('pac-input').value;
+				localStorage.house = document.getElementById('house').value;
+				localStorage.flat = document.getElementById('flat').value;
+
+				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Улица: ' +  document.getElementById('pac-input').value + '<br>' +'Дом: ' +  document.getElementById('house').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>' + 'Стоимость: ' + (Number(sessionStorage.cost) + Number(sessionStorage.dCost)) + '<br>';
+			});
+
+
 		// alert("You are not logged in");
-		window.location = "index.html";
+		// window.location = "index.html";
+
 	}
 // $('#name').change(function() {
 $('#name').val().length;
 
 // function allow() {
 window.setInterval(function(){
-	if ($('#name').val().length * $('#pac-input').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
+	if ($('#name').val().length * $('#pac-input').val().length * $('#house').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
 		$( "#toPay" ).css( "opacity", "1" );
 	} else {
 		$( "#toPay" ).css( "opacity", "0.5" );
 	}
-}, 1000);
+}, 100);
 
 $('input').change(function() {
-	if ($('#name').val().length * $('#pac-input').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
+	if ($('#name').val().length * $('#pac-input').val().length * $('#house').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
 		$( "#toPay" ).css( "opacity", "1" );
 	} else {
 		$( "#toPay" ).css( "opacity", "0.5" );
@@ -170,12 +117,14 @@ $('input').change(function() {
 });
 
 $( "#toPay" ).click(function( event ) {
-	if ($('#name').val().length * $('#pac-input').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
+	if ($('#name').val().length * $('#pac-input').val().length * $('#house').val().length * $('#flat').val().length * $('#phone').val().length * okplace > 0) {
 		$( "#toPay" ).css( "opacity", "1" );
 	} else {
 		$( "#toPay" ).css( "opacity", "0.5" );
+		event.preventDefault();
 		event.stopPropagation();	
 		$( "#fillall" ).css( "display", "block" );
+		return false;
 	}
 });
 
@@ -227,20 +176,20 @@ var d = new Date();
 var h = d.getHours();
 var m = d.getMinutes();
 
-//9-23
+//10-22
 
-if (h > 8 && h < 23) { // now
+if (h > 8 && h < 21) { // now
 	$(".chooseTime").append("<option>Сегодня до "+(h+1)+":"+m+"</option>");
-	for (h+1; h < 22; h++) {
+	for (h+1; h < 21; h++) {
 		$(".chooseTime").append("<option>Сегодня "+(h+1)+":00"+" - "+(h+2)+":00"+"</option>");
 	}
 } else { //later
-	if (h >= 23) {
-		for (i = 8; i < 22; i++) {
+	if (h >= 21) {
+		for (i = 9; i < 21; i++) {
 			$(".chooseTime").append("<option>Завтра "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
 		}
 	} else {
-		for (i = 8; i < 22; i++) {
+		for (i = 9; i < 21; i++) {
 			$(".chooseTime").append("<option>Сегодня "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
 		}
 	}
@@ -266,3 +215,5 @@ $('#yescomment').click(function() {
     $( "#comment" ).css( 'display', 'block' );
 });
 
+
+setTimeout(codeAddress, 1000);

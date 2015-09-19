@@ -22,12 +22,19 @@
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/tile.js"></script>
 	<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
-	
+
+
+    <link rel="stylesheet" type="text/css" href="css/dd.css">
+	<script src="js/dd.js"></script>
 
 
 </head>
 <body>
 <div class="page-container">
+
+
+
+
 
     <div class="header  navbar-fixed-top">
 			<nav class="navbar container-fluid">
@@ -53,76 +60,49 @@
 					  
 					  <li class=""><a href="about.html" id="about"><button class="btn btn-primary btn-nav"> О нас</button></a></li>
 
-<!-- 					  <li class="shop">
-
-					  		<img src="img/ver2.png">
-					  		Верный
- -->
 					  </li>
                       </ul>
 
 
+						<!-- <a href="#" data-jq-dropdown="#jq-dropdown-1">
+							<button type="button" class="btn btn-primary btn-check">
+							  <div class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></div> Корзина
+							</button>
+						</a>
 
-                    <ul class="nav navbar-right cart">
-                      <li class="dropdown">
-                      <!-- <div class="btn-primary">asdd</div> -->
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <div id="jq-dropdown-1" class="jq-dropdown jq-dropdown-tip">
+						    <div id="cart_white"></div>
+						</div> -->
 
-					<button type="button" class="btn btn-primary btn-check">
-					  <div class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></div> Корзина
-					</button>
+						<div class="backdrop"></div>
 
-					<span id="cart-number">0</span> 
-					<!-- <div id="total_main"></div> -->
+						<div id="dd_body">
+
+							
 
 
-
-					</a>
-
-
-					<div class="cart-info dropdown-menu" id="cart-items">
-					<div id="delivery_day">Доставим Вам до двери сегодня до <b id="cart_time_b"></b></div>
 					<div id="cart_white"></div>
+
+					<div id="delivery_day">Доставим Вам до двери сегодня до <b id="cart_time_b"></b></div>
 
 					<div class="cart-total">
 						  <table>
 							 <tbody>
 
-							 	<!-- <div class="form-group"> 
-								<label class="ordercomlabel">Ваше имя</label> 
-								<div class="ordercom"> 
-								<input type="text" required value="" class="form-control" name="first_name" placeholder="" id="name">
-							    <p class="help-block text-danger"></p> 
-								</div> 
-								</div>  -->
-
-							 <!-- <tr id="">
-							  <td class="cart-first-col">Продуктов на </td>
-							  <td class="cart-second-col"><b> <span id="grocery-price"> 0</span></b> руб</td>
-							 </tr> -->
-							 <!-- <tr>
-							  <td class="cart-first-col" id="delivery_day">Доставим сегодня до </td>
-							  <td class="cart-second-col"><b id="cart_time_b"></b></td>
-							 </tr> -->
-							 <!-- <tr id="">
-							  <td class="cart-first-col">Стоимость доставки </td>
-							  <td class="cart-second-col"><b> <span id="delivery_cost"> 100</span></b> руб</td>
-							  <td id="plus100" class="hidden"> – 100 руб за каждую 1000 руб <br> + 100 руб за каждые 10 кг </td>
-							 </tr> -->
-							 <!-- <tr id="totalCost">
-							  <td class="cart-first-col">Итого </td>
-							  <td class="cart-second-col"><b> <span id="cart-price"> 100</span></b> руб</td>
-							 </tr> -->
+							 	
 							 
 							</tbody>
 						  </table>
 						  
-						  <p id="freeDelivery">Бесплатная первая доставка! <!-- <span id="freeDeliveryplus">При заказе до 10 кг.</span> --></p>
+						  <p id="freeDelivery">Бесплатная первая доставка! </p>
 
 						  <button class="checkout_button btn btn-primary" id="orderBtn">Заказать <span id="cototal"><span id="cart-price">100</span> руб</span></button>
 						  <p id="notmin">Извините, минимальная сумма заказа: 300р</p>
 						  									 
 						</div>
+
+					<div class="cart-info dropdown-menu2 cart" id="cart-items">
+					
 
 						<table class="table">
 							<thead>
@@ -132,9 +112,34 @@
 						</table>
 												
 					</div> 
+
+
+				</div>
+
+
+
+
+
+                     <ul class="nav navbar-right cart">
+                      <li class="dropdown">
+					<a href="#" class="dropdown-toggle" id="dd_btn">
+
+					<button type="button" class="btn btn-primary btn-check">
+					  <div class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></div> Корзина
+					</button>
+
+					<span id="cart-number">0</span> 
+
+
+
+					</a>
+					
+
+
+
 			      </li>
 			      
-			     </ul>
+			     </ul> 
 
 			     
 					 
@@ -147,29 +152,29 @@
 	<div class="container-fluid content">
 		<div class="row">
 		    <div class="left-menu">
-				<a href="#" class="cats" id="fruits"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="juices"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="baby"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="curd"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="dairy"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="canned"><img id="" src="img/types/type2.png"></a>
-				<a href="#" class="cats" id="salt"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="souses"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="breakfasts"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="pasta"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="nuts"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="oil"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="frozen"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="cooked"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="meatdeli"><img id="" src="img/types/type3.png"></a>
-				<a href="#" class="cats" id="meat"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="fish"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="cheese"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="bread"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="tea"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="sweet"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="cookies"><img id="" src="img/types/type1.png"></a>
-				<a href="#" class="cats" id="choco"><img id="" src="img/types/type1.png"></a>
+				<a href="#" class="cats" id="fruits"><img id="" src="img/types/fruits.jpg"></a>
+				<a href="#" class="cats" id="juices"><img id="" src="img/types/juices.jpg"></a>
+				<a href="#" class="cats" id="water"><img id="" src="img/types/water.jpg"></a>
+				<a href="#" class="cats" id="baby"><img id="" src="img/types/baby.jpg"></a>
+				<a href="#" class="cats" id="curd"><img id="" src="img/types/curd.jpg"></a>
+				<a href="#" class="cats" id="dairy"><img id="" src="img/types/dairy.jpg"></a>
+				<a href="#" class="cats" id="canned"><img id="" src="img/types/canned.jpg"></a>
+				<a href="#" class="cats" id="salt"><img id="" src="img/types/salt.jpg"></a>
+				<a href="#" class="cats" id="souses"><img id="" src="img/types/sauces.jpg"></a>
+				<a href="#" class="cats" id="breakfasts"><img id="" src="img/types/breakfasts.jpg"></a>
+				<a href="#" class="cats" id="pasta"><img id="" src="img/types/pasta.jpg"></a>
+				<a href="#" class="cats" id="nuts"><img id="" src="img/types/nuts.jpg"></a>
+				<a href="#" class="cats" id="frozen"><img id="" src="img/types/frozen.jpg"></a>
+				<a href="#" class="cats" id="cooked"><img id="" src="img/types/cooked.jpg"></a>
+				<a href="#" class="cats" id="meatdeli"><img id="" src="img/types/meatdeli.jpg"></a>
+				<a href="#" class="cats" id="meat"><img id="" src="img/types/meat.jpg"></a>
+				<a href="#" class="cats" id="fish"><img id="" src="img/types/fish.jpg"></a>
+				<a href="#" class="cats" id="cheese"><img id="" src="img/types/cheese.jpg"></a>
+				<a href="#" class="cats" id="bread"><img id="" src="img/types/bread.jpg"></a>
+				<a href="#" class="cats" id="tea"><img id="" src="img/types/tea.jpg"></a>
+				<a href="#" class="cats" id="sweet"><img id="" src="img/types/sweet.jpg"></a>
+				<a href="#" class="cats" id="cookies"><img id="" src="img/types/cookies.jpg"></a>
+				<a href="#" class="cats" id="choco"><img id="" src="img/types/choco.jpg"></a>
 
 				<a href="#top" id="clicktop"> </a>
 				<div id="cattop"></div>
@@ -200,6 +205,14 @@
 <script type="text/javascript" src="js/cart.js"></script>
 <script type="text/javascript" src="js/categories.js"></script>
 
+<script type="text/javascript">
+
+$(document).on('click', ".dropdown-toggle", function(){
+	$(this).after('<div class="dropdown-backdrop"></div>')
+});
+
+</script>
+
 <script>
   // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -213,58 +226,5 @@
 </body>
 </html>
 
-<!-- <div class="modal fade bs-example-modal-lg" id="item0" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content row">
-    <div class="row">
-      <div class="popup-image">
-      <span class="popup-helper"></span>
-      	<img src="http://expfood.ru/img/products/15.jpg">
-      </div>
-      <div class="popup-name">
-      <p class="popup-title" id="myModalLabel">Картофель Вегетория для жарки 3кг</p>
-
-      <div class="popup-price">
-      	124 <span class="kop">00</span>
-      </div>
-	  <div class="popup-mass">
-			за <b>400г</b>
-	  </div> 
-	  <input type="email" class="form-control input-lg popup-num" value="1">
-	<button class="btn btn-primary popup-add">+ Добавить в корзину</button>
-	<p class="popup-success"><span class="popup-suc">3</span> товара в корзине</p>
-	  </div>  	
-  </div>
-  <hr>
-  <div class="row">
-      	<div class="popup-description">
-			<strong>Описание</strong> <br>
-			<div class="description-text">
-Теплые океанические течения и близость Японского моря определяют особый микроклимат широколиственных лесов Дальнего Востока. Во время цветения амурской и маньчжурской лип получают первосортный мед с замечательным вкусом и нежным ароматом
-
-О пользе меда известно с древних времен. Щедрая природа обеспечила нас самым ароматным лекарством, которое помогает при авитаминозе и простуде, головных болях, болезнях желудка и печени.
-
-Наслаждайтесь этим лакомством просто так, дополняйте им воздушную выпечку, золотистые блинчики или творог на завтрак.
-			</div>
-    	</div>
-    	<div class="product_card_props">
-			<div class="product_card_prop_item_title">Энергетическая ценность (ккал/100г.):</div>
-			<div class="product_card_prop_item_value">349.2</div>
-			<div class="product_card_prop_item_title">Жиры (г/100г.):</div>
-			<div class="product_card_prop_item_value">0.3</div>
-			<div class="product_card_prop_item_title">Углеводы (г/100г.):</div>
-			<div class="product_card_prop_item_value">83</div>
-			<div class="product_card_prop_item_title">Бренд:</div>
-			<div class="product_card_prop_item_value">Dr.Oetker</div>
-			<div class="product_card_prop_item_title">Страна производства:</div>
-			<div class="product_card_prop_item_value">Россия</div>
-			<div class="product_card_prop_item_title">Состав продукта:</div>
-			<div class="product_card_prop_item_value">кукурузный крахмал, искусственный ароматизатор ваниль, идентичный натуральному ароматизатор ваниль, пищевые красители: желтый хинолиновый, желтый "солнечный закат"</div>
-			</div>
-		</div>
-    	</div>
-</div>
-</div>
- -->
 
  

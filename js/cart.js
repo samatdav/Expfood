@@ -53,32 +53,35 @@ if (sessionStorage["ids"]) {
 
 
 var currentUser = Parse.User.current();
+// if (currentUser) {
+// 	var User = Parse.Object.extend("User");
+// 			var query = new Parse.Query(User);
+// 			query.get(currentUser.id, {
+// 			  success: function(user) {
+// 			  	if (user.get("freeDelivery")) {
+// 			  			dCost = 0;
+// 						basedCost = 0;
+// 						$('#delivery_cost').html(dCost);
+// 						$('#cart-price').html(totalCost);
+// 						$('#total_main').html((totalCost + dCost) + '  &#8381;');
+// 						$('#freeDelivery').css('display', 'block');
+// 			  	}
+// 			  }
+// 			});
+// } else {
+// 	dCost = 0;
+// 	basedCost = 0;
+// 	$('#delivery_cost').html(dCost);
+// 	$('#cart-price').html(totalCost);
+// 	$('#total_main').html((totalCost + dCost) + '  &#8381;');
+// 	$('#freeDelivery').css('display', 'block');
+// }
+
 if (currentUser) {
-	var User = Parse.Object.extend("User");
-			var query = new Parse.Query(User);
-			query.get(currentUser.id, {
-			  success: function(user) {
-			  	if (user.get("freeDelivery")) {
-			  			dCost = 0;
-						basedCost = 0;
-						$('#delivery_cost').html(dCost);
-						$('#cart-price').html(totalCost);
-						$('#total_main').html((totalCost + dCost) + '  &#8381;');
-						$('#freeDelivery').css('display', 'block');
-			  	}
-			  }
-			});
+	$('#freeDelivery').css('display', 'none');
 } else {
-	dCost = 0;
-	basedCost = 0;
-	$('#delivery_cost').html(dCost);
-	$('#cart-price').html(totalCost);
-	$('#total_main').html((totalCost + dCost) + '  &#8381;');
 	$('#freeDelivery').css('display', 'block');
 }
-// alert(dCost);
-
-
 
 
 if (sessionStorage.cart) {
@@ -162,6 +165,11 @@ $(document).on('click', ".increase_count", function(){
 
 	$('#cart-price').html(totalCost);
 
+	if (totalCost >= 300) {
+		$('#notmin').css( "display", "none" );
+	}
+
+
 	sessionStorage.cart = $("#ordered-items").html();
 	sessionStorage.total = totalCost;
 	return newItem;
@@ -171,7 +179,7 @@ $('#orderBtn').on({
 	"click":function(e){
       
 // $(document).on('click', "#orderBtn", function(){ // Parse
-	if ((totalCost+dCost) < 300) {
+	if (totalCost < 300) {
 		e.stopPropagation();
 		$('#notmin').css( "display", "block" );
 	}
@@ -180,7 +188,7 @@ $('#orderBtn').on({
 		$('#notmin').css( "display", "none" );
 
 
-		var OrderArchive = Parse.Object.extend("OrdersArchive");
+	var OrderArchive = Parse.Object.extend("OrdersArchive");
 	var orderArchive = new OrderArchive();
 	orderArchive.set("html", $('#cart-items').html());
 	orderArchive.save(null, {
@@ -194,26 +202,19 @@ $('#orderBtn').on({
 
 	var Order = Parse.Object.extend("Orders");
 	var order = new Order();
-	var currentUser = Parse.User.current();
-	order.set("productsId", ids);
-	order.set("quantity", counts);
 	order.set("html", $('#cart-items').html());
-	// order.set("User", Parse.User.current());
-	// console.log(ids);
-	// console.log(counts);
+
 
 	order.save(null, {
 	  success: function(order) {
 	  	sessionStorage.cOrder = order.id;
 	  	sessionStorage.cost = totalCost;
 	  	sessionStorage.dCost = dCost;
-	    // Execute any logic that should take place after the object is saved.
-	    // alert('New object created with objectId: ' + order.objectId);
-	    if (currentUser) {
+	    // if (currentUser) {
 	    	window.location = "order.html";
-	    } else {
-	    	window.location = "signin.html";
-	    }
+	    // } else {
+	    // 	window.location = "signin.html";
+	    // }
 	    
 	    
 	  },
@@ -308,16 +309,16 @@ function updateClock() {
 	var d = new Date();
 	var h = d.getHours() + 1;
 	var m = d.getMinutes();
-	$("#cart_time_b").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
+	$("#cart_time_b").html(h+':'+ (m<10?'0':'') + m);
 	// $(".order-time").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
 	// если верный работает с 9 до 22
-	if ((h > 21 && m > 30) || h > 22){
-		$("#cart_time_b").html('12:00');
-		$("#delivery_day").html('Доставим завтра до ');
+	if (h > 21){
+		$("#cart_time_b").html('11:00');
+		$("#delivery_day").html('Доставим завтра до 11:00');
 
 	} 
-	if (h < 8){
-		$("#cart_time_b").html('10:00');
+	if (h < 10){
+		$("#cart_time_b").html('11:00');
 	}
 	
 
@@ -455,7 +456,7 @@ $("#ordered-items").on('click', '.cart-del', function() {
 
 $(document).scroll(function() {
   var y = $(this).scrollTop();
-  if (y > 3000) {
+  if (y > 1950) {
     $('#cattop').css('display', 'block');
     $('#clicktop').css('display', 'block');
     $('#texttop').css('display', 'block');
@@ -465,3 +466,41 @@ $(document).scroll(function() {
     $('#texttop').css('display', 'none');
   }
 });
+
+
+
+
+// $('.product').click(function () {
+//     // alert($(this).attr('id'));
+//     alert("sadf");
+// });
+
+	$(document).on('click', ".product", function(){
+	  src = $('#idt' + $(this).attr('id')).find('img').attr('src');
+	  newsrc = src.replace("table", "big");
+	  $('#idt' + $(this).attr('id')).find('img').attr({
+	  	src: newsrc,
+	  });
+	});
+
+
+$(document).on('click', ".product_card_prop_item_value", function(e){
+// $('.product_card_prop_item_value').find('a').click(function(e) { 
+ e.preventDefault(); 
+});
+
+$(document).on('click', "#dd_btn", function(){
+	$('#dd_body').toggle();
+	$('.backdrop').toggle();
+
+});
+
+
+$(document).on('click', ".backdrop", function(){
+	$('#dd_body').toggle();
+	$('.backdrop').hide();
+
+});
+
+
+

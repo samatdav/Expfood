@@ -14,15 +14,14 @@
 	    <link href="css/css(1)" rel="stylesheet" type="text/css">
 	    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	    <link rel="stylesheet" type="text/css" href="css/style.css">
-
-	    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-
-
 	    <link rel="stylesheet" type="text/css" href="css/main.css">
 	    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	    <link rel="stylesheet" type="text/css" href="css/order.css"> 
+
 		<title>Доставка продуктов за 1 час</title>
 		<meta name="description" content="Быстрая доставка продуктов по городу одинцово за 50 рублей. Курьер сходит за Вас в магазин и сэкономит Ваше время. ">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/tile.js"></script>
 		<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 			    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false&language=en"></script>
@@ -39,11 +38,12 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="css/order.css"> 
 
 <div class="header headerOrder navbar-fixed-top"> <nav class="navbar fluid-container"> 
 
-<div class="navbar-header"> <a href="index.html"><img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood"> <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood"> </a>
+<div class="navbar-header"> <a href="index.html"><img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood"><img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood"> </a>
+
+<a href="signin.html" class="orderlogin">Вход / Регистрация</a>
 
 </div> 
 
@@ -90,7 +90,7 @@
 	  </div>
 	  <div class="form-group inline">
 	   <label for="exampleInputEmail2" id="flatlab"></label>
-	    <input type="email" class="form-control twoad" id="flat" placeholder="Квартира">
+	    <input type="text" class="form-control twoad" id="flat" placeholder="Квартира">
 	  </div>
     <p class="help-block text-danger"></p>
 	</div> 
@@ -176,7 +176,7 @@
 </span> Назад</a>
 </li> 
 
-<li id="tt" class="next" data-toggle="tooltip" data-placement="right" title="Tooltip on top">
+<li id="tt" class="next" >
 <a href="payment.html" id="toPay" class="backForth">Оплата
 <span aria-hidden="true">&rarr;</span></a>
 </li>
