@@ -7,7 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Доставка продуктов за 1 час</title>
 	<meta name="description" content="Быстрая доставка продуктов по городу одинцово за 50 рублей. Курьер сходит за Вас в магазин и сэкономит Ваше время. ">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <script type="text/javascript" src="js/mobile.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
@@ -24,41 +23,37 @@
 	<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="css/dd.css">
-	<script src="js/dd.js"></script>
-
-
 </head>
 <body>
 <div class="page-container">
-
-
-
-
 
     <div class="header  navbar-fixed-top">
 			<nav class="navbar container-fluid">
 		
 			  <div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				  <span class="sr-only">Toggle navigation</span>
-				  <span class="icon-bar"></span>
-				  <span class="icon-bar"></span>
-				  <span class="icon-bar"></span>
-				</button>
 					<a href="#"><img id="logo" src="img/logo_400.png" alt="expfood"></a><!-- Express Food -->
-					<div class="header_cat"><span id="first_header">Доставка продуктов за 1 час в <a id="moscow" href="about.html"><u>центре Москвы!</u></a></span></div>
+					<div class="header_cat"><span id="first_header">Доставка продуктов за 1 час <br> <span class="inmoscow">в <a id="moscow" href="about.html"><u>центре Москвы</u></a></span></span></div>
+
+					<div class="box">
+					  <div class="container-4 inner-addon left-addon">
+					  	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					    <input type="search" id="search" placeholder="Поиск продуктов из Азбуки Вкуса" />
+					    <!-- <img src="img/sei.png"> -->
+					    
+					  </div>
+					</div>
 
 					<!-- <div class="discount">Мы закрылись в Одинцово<br>на неопределенный срок :(</div> -->
 					<a target="_blank" href="https://itunes.apple.com/ru/app/express-food/id997335666?l=ru&ls=1&mt=8"><img class="appstore" src="img/av5.png"></a>
 					
 			  </div>
+			  <a href="about.html" id="about"><button class="btn btn-primary btn-nav"> О нас</button></a>
   
                  
                  <div class="navbar-collapse collapse navbar-right">
 					<ul class="nav navbar-nav">
 					  
-					  <li class=""><a href="about.html" id="about"><button class="btn btn-primary btn-nav"> О нас</button></a></li>
+					  
 
 					  </li>
                       </ul>
@@ -97,7 +92,7 @@
 						  <p id="freeDelivery">Бесплатная первая доставка! </p>
 
 						  <button class="checkout_button btn btn-primary" id="orderBtn">Заказать <span id="cototal"><span id="cart-price">100</span> руб</span></button>
-						  <p id="notmin">Извините, минимальная сумма заказа: 300р</p>
+						  <p id="notmin">Извините, минимальная сумма заказа: 200р</p>
 						  									 
 						</div>
 
@@ -155,26 +150,26 @@
 				<a href="#" class="cats" id="fruits"><img id="" src="img/types/fruits.jpg"></a>
 				<a href="#" class="cats" id="juices"><img id="" src="img/types/juices.jpg"></a>
 				<a href="#" class="cats" id="water"><img id="" src="img/types/water.jpg"></a>
-				<a href="#" class="cats" id="baby"><img id="" src="img/types/baby.jpg"></a>
+				<a href="#" class="cats" id="breakfasts"><img id="" src="img/types/breakfasts.jpg"></a>
 				<a href="#" class="cats" id="curd"><img id="" src="img/types/curd.jpg"></a>
 				<a href="#" class="cats" id="dairy"><img id="" src="img/types/dairy.jpg"></a>
-				<a href="#" class="cats" id="canned"><img id="" src="img/types/canned.jpg"></a>
-				<a href="#" class="cats" id="salt"><img id="" src="img/types/salt.jpg"></a>
-				<a href="#" class="cats" id="souses"><img id="" src="img/types/sauces.jpg"></a>
-				<a href="#" class="cats" id="breakfasts"><img id="" src="img/types/breakfasts.jpg"></a>
-				<a href="#" class="cats" id="pasta"><img id="" src="img/types/pasta.jpg"></a>
-				<a href="#" class="cats" id="nuts"><img id="" src="img/types/nuts.jpg"></a>
-				<a href="#" class="cats" id="frozen"><img id="" src="img/types/frozen.jpg"></a>
-				<a href="#" class="cats" id="cooked"><img id="" src="img/types/cooked.jpg"></a>
+				<a href="#" class="cats" id="cheese"><img id="" src="img/types/cheese.jpg"></a>
 				<a href="#" class="cats" id="meatdeli"><img id="" src="img/types/meatdeli.jpg"></a>
 				<a href="#" class="cats" id="meat"><img id="" src="img/types/meat.jpg"></a>
 				<a href="#" class="cats" id="fish"><img id="" src="img/types/fish.jpg"></a>
-				<a href="#" class="cats" id="cheese"><img id="" src="img/types/cheese.jpg"></a>
 				<a href="#" class="cats" id="bread"><img id="" src="img/types/bread.jpg"></a>
-				<a href="#" class="cats" id="tea"><img id="" src="img/types/tea.jpg"></a>
-				<a href="#" class="cats" id="sweet"><img id="" src="img/types/sweet.jpg"></a>
-				<a href="#" class="cats" id="cookies"><img id="" src="img/types/cookies.jpg"></a>
+				<a href="#" class="cats" id="pasta"><img id="" src="img/types/pasta.jpg"></a>
+				<a href="#" class="cats" id="cooked"><img id="" src="img/types/cooked.jpg"></a>
 				<a href="#" class="cats" id="choco"><img id="" src="img/types/choco.jpg"></a>
+				<a href="#" class="cats" id="cookies"><img id="" src="img/types/cookies.jpg"></a>
+				<a href="#" class="cats" id="sweet"><img id="" src="img/types/sweet.jpg"></a>
+				<a href="#" class="cats" id="frozen"><img id="" src="img/types/frozen.jpg"></a>
+				<a href="#" class="cats" id="canned"><img id="" src="img/types/canned.jpg"></a>
+				<a href="#" class="cats" id="tea"><img id="" src="img/types/tea.jpg"></a>
+				<a href="#" class="cats" id="sauces"><img id="" src="img/types/sauces.jpg"></a>
+				<a href="#" class="cats" id="salt"><img id="" src="img/types/salt.jpg"></a>
+				<a href="#" class="cats" id="nuts"><img id="" src="img/types/nuts.jpg"></a>
+				<a href="#" class="cats" id="baby"><img id="" src="img/types/baby.jpg"></a>
 
 				<a href="#top" id="clicktop"> </a>
 				<div id="cattop"></div>
@@ -186,6 +181,7 @@
 		
 		<div id="item-wrap-inner" class="products-wrap">
 		<img id="mainimage" src="img/main.png">
+		
 		<a href="#top"><img id="mainimage" src="img/mainred.png"></a>
 	  	 </div>
 	 </div>	
@@ -204,6 +200,8 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/cart.js"></script>
 <script type="text/javascript" src="js/categories.js"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <script type="text/javascript">
 

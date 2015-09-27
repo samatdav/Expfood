@@ -620,7 +620,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 		height: 30px;
 		position: fixed;
 		top: 10px;
-		right: 150px;
+		right: 125px;
 		
 	}
 
@@ -1587,7 +1587,7 @@ ul.slides
 	height: 58px;
 	position: relative;
 	top: 0px;
-	left: 50px;
+	left: 20px;
 }
 #totalCost {
 	/*text-align: right;*/

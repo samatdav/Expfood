@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Express Food</title>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-	<script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.6.2.min.js"></script>
 	
 
 </head>
@@ -14,6 +14,7 @@
 <div class="page-container">
 <div id="admin"></div>
 <script type="text/javascript">
+n = 0;
 	Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
 	var Orders = Parse.Object.extend("Orders");
@@ -23,15 +24,102 @@
 	  success: function(results) {
 	    // alert("Successfully retrieved " + results.length + " orders.");	    
 	    for (var i = 0; i < results.length; i++) { 
+
 		var object = results[i];
 	      // alert(object.id + ' - ' + object.get('playerName'));
-	      $("#admin").prepend(object.get('userInfo') + "Оплата: " + object.get('payment') + object.get('html') + "<br><br><br><br><br>");
+		    if (object.get('productsId') == undefined) {
+		      $("#admin").prepend(object.get('userInfo') + "Оплата: " + object.get('payment') + object.get('html') + "<br><br><br><br><br>");
+		      
+	  		} else {
+	  			$("#admin").prepend('user one');
+
+	  	// 		var user = object.get('User');
+	  	// 		console.log(user);
+	  	// 		user.fetch({
+				//   success: function(post) {
+				//     var title = post.get("email");
+				//     console.log(title);
+				//   }
+				// });
+	  			
+				// console.log('hi'+object.get('quantity').length);
+	  			for (var j = 0; j < object.get('quantity').length; j++) { 	  			
+
+	  			// $.each(object.get('quantity'), function( index, value ) {
+	  				
+	  				$("#admin").prepend(i);
+		      		n+=1;
+					// $("#admin").prepend(value + ' ');
+					// console.log(object.get('quantity')[1]);
+					  var prodNew = Parse.Object.extend("prodNew");
+					  var queryP = new Parse.Query(prodNew);
+					  queryP.get(object.get('productsId')[j], {
+					  success: function(prod) {
+					  	// alert(prod.get("product_name"));
+					  	// console.log('n=' + i);
+					  	$("#admin").prepend('Заказ №'+i+'<br><tr class="ordered-item" id="cart-"> '+ '<td class="image"> <span class="helper"></span><img src="'+ prod.get("img_sm") + '"></td>' + '<td class="name">'+prod.get("product_name")+ '<span class="mass hidden"> '+prod.get("amount")+'</span>' + '<td class="price"><span class="priceShow">'+prod.get("price")+'</span></td>' + '<td class="quantity"> x '+object.get('quantity')[j]+'</td>' + '<td class="total"> = <span class="totalShow">'+ prod.get("price")*object.get('quantity')[j]+ '</span>'+ '<a href="#" class="cart-change cart-add"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><span class="cart-del-txt"> Добавить</span></a>' + '<a href="#" class="cart-change cart-min"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="cart-del-txt"> Убрать</span></a>' + '<a href="#" class="cart-change cart-del">×</a>' + '</td>'+ '</tr><br>');
+					    // The object was retrieved successfully.
+					  },
+					  error: function(object, error) {
+					  	console.log('sdf');
+					    // The object was not retrieved successfully.
+					    // error is a Parse.Error with an error code and message.
+					  }
+					});
+	  			// });
+					}
+	  			
+	  	// 		$.each(object.get('productsId'), function( index, value ) {
+				//   // alert( index + ": " + value );
+
+				//   var prodNew = Parse.Object.extend("prodNew");
+				//   var queryP = new Parse.Query(prodNew);
+				//   queryP.get(value, {
+				// 	  success: function(prod) {
+				// 	  	// alert(prod.get("product_name"));
+				// 	  	$("#admin").prepend(prod.get("product_name") + '<br>' + prod.get("price") +'<br><br>')
+				// 	    // The object was retrieved successfully.
+				// 	  },
+				// 	  error: function(object, error) {
+				// 	    // The object was not retrieved successfully.
+				// 	    // error is a Parse.Error with an error code and message.
+				// 	  }
+				// 	});
+				// });
+				
+	  	// 		var prodNew = Parse.Object.extend("prodNew");
+				// var query3 = new Parse.Query(GameScore);
+				// // query.equalTo("objectId", object.get('userInfo'));
+				// query.find({
+				//   success: function(results) {
+				//     alert("Successfully retrieved " + results.length + " scores.");
+				//     // Do something with the returned Parse.Object values
+				//     for (var i = 0; i < results.length; i++) {
+				//       var object = results[i];
+				//       alert(object.id + ' - ' + object.get('playerName'));
+				//     }
+				//   },
+				//   error: function(error) {
+				//     alert("Error: " + error.code + " " + error.message);
+				//   }
+				// });
+	  		}
 	    }
 	  },
 	  error: function(error) {
 	    alert("Error: " + error.code + " " + error.message);
 	  }
 	});
+
+function sleep(miliseconds) {
+           var currentTime = new Date().getTime();
+
+           while (currentTime + miliseconds >= new Date().getTime()) {
+           }
+       }
+
+
+
 
 </script>
 
@@ -55,6 +143,10 @@ img {
 	margin-bottom: 50px;
 	/*background-color: #faa;*/
 }
+.kop {
+	display: none;
+}
+
 </style>
 
 </body>

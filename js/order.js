@@ -1,5 +1,6 @@
 Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
+
 	var currentUser = Parse.User.current();
 
 	if (currentUser) { //person is logged
@@ -37,8 +38,11 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 
 				user.save();
 
+				sessionStorage.thephone = document.getElementById('phone').value;
 
 				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Улица: ' +  document.getElementById('pac-input').value + '<br>' +'Дом: ' +  document.getElementById('house').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>' + 'Стоимость: ' + (Number(sessionStorage.cost) + Number(sessionStorage.dCost)) + '<br>';
+
+
 				});
 			  },
 			  error: function(object, error) {
@@ -87,6 +91,8 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 				localStorage.AdressField = document.getElementById('pac-input').value;
 				localStorage.house = document.getElementById('house').value;
 				localStorage.flat = document.getElementById('flat').value;
+
+				sessionStorage.thephone = document.getElementById('phone').value;
 
 				sessionStorage.userInfo = 'Имя: ' + document.getElementById('name').value + '<br>' + 'Телефон: ' + document.getElementById('phone').value + '<br>' +'Улица: ' +  document.getElementById('pac-input').value + '<br>' +'Дом: ' +  document.getElementById('house').value + '<br>' + 'Квартира: ' + document.getElementById('flat').value + '<br>' + 'Время: ' + document.getElementById('time').value + '<br>' + 'Комментарий: ' + document.getElementById('comment').value + '<br>' + 'Стоимость: ' + (Number(sessionStorage.cost) + Number(sessionStorage.dCost)) + '<br>';
 			});

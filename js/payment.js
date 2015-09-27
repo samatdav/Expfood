@@ -1,6 +1,5 @@
 Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
-
 function num2word(num,words) {
   num=num%100;
   if (num>19) { num=num%10; }
@@ -12,11 +11,27 @@ function num2word(num,words) {
 }
 words=Array("рубль", "рубля", "рублей");
 
-var productPay = Number(sessionStorage.cost);
-var payTotal = productPay + Number(sessionStorage.dCost);
+
+
+
+var free = Parse.Object.extend("free");
+var query = new Parse.Query(free);
+query.equalTo("phone", sessionStorage.thephone);
+query.find({
+  success: function(results) {
+    console.log(results.length);
+    if (results.length > 0) {
+      dCostPay = 100;
+
+    } else {
+      dCostPay = 0;
+    }
+
+    var productPay = Number(sessionStorage.cost);
+var payTotal = productPay + dCostPay;
 var discPay = Math.round(payTotal* 0.05);
 var payFinal = payTotal - discPay;
-var dCostPay = Number(sessionStorage.dCost);
+// var dCostPay = Number(sessionStorage.dCost);
 $( "#payProducts" ).html( productPay + ' <span class="payRub">' + num2word(productPay,words) + '</span>');
 if(dCostPay > 0) {
   $( "#dCostPay" ).html( '+' + dCostPay + ' <span class="payRub">' + num2word(dCostPay,words) + '</span>' );
@@ -42,6 +57,24 @@ $('#cash').click(function() {
     $( "#payTotal" ).html( payTotal + ' <span class="payRub"> ' + num2word(payTotal,words) + '</span>' );
     $( ".next" ).html( '<a href="success.html" id="toPay" class="backForth">Завершить <span aria-hidden="true">&rarr;</span></a>' );
 });
+
+
+
+    // alert("Successfully retrieved " + results.length + " scores.");
+    // // Do something with the returned Parse.Object values
+    // for (var i = 0; i < results.length; i++) {
+    //   var object = results[i];
+    //   alert(object.id + ' - ' + object.get('playerName'));
+    // }
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+
+
+
+
 
 
 
@@ -80,3 +113,21 @@ query.find({
   }
 });
 
+
+if (Number(sessionStorage.cost) > 3000) {
+  document.getElementById("cash").disabled = true;
+  $('.radiocash').css('cursor', 'default');
+  $('.radiocash').css('color', '#aaa');
+  $( ".radiocash" ).click(function() {
+    $('#kwarn').css('display', 'block');
+  });
+}
+
+
+  focus();
+  var listener = addEventListener('blur', function() {
+    if(document.activeElement === document.getElementById('iframe')) {
+      console.log('asdfdd');
+    }
+      removeEventListener(listener);
+  });
