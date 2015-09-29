@@ -15,21 +15,48 @@
 <div id="admin"></div>
 <script type="text/javascript">
 n = 0;
-	Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
+Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
 
-	var Orders = Parse.Object.extend("Orders");
-	var query = new Parse.Query(Orders);
-	// query.equalTo("productsId", "Dp8yQZjG7k");
-	query.find({
-	  success: function(results) {
-	    // alert("Successfully retrieved " + results.length + " orders.");	    
-					MegaRec(results,0,results.length);
-					 
-	  },
-	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
-	  }
-	});
+var Orders = Parse.Object.extend("Orders");
+var query = new Parse.Query(Orders);
+// query.equalTo("productsId", "Dp8yQZjG7k");
+query.find({
+  success: function(results) {
+    // alert("Successfully retrieved " + results.length + " orders.");	    
+				MegaRec(results,0,results.length);
+				 
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+
+
+
+
+function MegaRec(results,ind,maxInd){
+	var object = results[ind];
+	// alert(object.id + ' - ' + object.get('playerName'));
+	if (object.get('productsId') == undefined) {
+		MegaRec(results,ind+1,maxInd);
+	  $("#admin").prepend(object.get('userInfo') + "Оплата: " + object.get('payment') + object.get('html') + "<br><br><br><br><br>");
+	  
+	} else {
+	var num = object.get('quantity').length;
+	console.log('num='+num);
+		Rec(0,num,ind,results,maxInd,object);
+	}
+}
+
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
+
+
+
 
 function Rec(index,max,zakaz,results,maxInd,object){
   var prodNew = Parse.Object.extend("prodNew");
@@ -39,25 +66,27 @@ function Rec(index,max,zakaz,results,maxInd,object){
   success: function(prod) {
   	// alert(prod.get("product_name"));
   	// console.log('n=' + i);
-  	$("#admin").prepend('ProdNumber №'+t+'<br><tr class="ordered-item" id="cart-"> '+ '<td class="image"> <span class="helper"></span><img src="'+ prod.get("img_sm") + '"></td>' + '<td class="name">'+prod.get("product_name")+ '<span class="mass hidden"> '+prod.get("amount")+'</span>' + '<td class="price"><span class="priceShow">'+prod.get("price")+'</span></td>' + '<td class="quantity"> x '+object.get('quantity')[t]+'</td>' + '<td class="total"> = <span class="totalShow">'+ prod.get("price")*object.get('quantity')[t]+ '</span>'+ '<a href="#" class="cart-change cart-add"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><span class="cart-del-txt"> Добавить</span></a>' + '<a href="#" class="cart-change cart-min"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="cart-del-txt"> Убрать</span></a>' + '<a href="#" class="cart-change cart-del">×</a>' + '</td>'+ '</tr><br>');
+
+  	// if (t==0) {
+
+  	// }
+  	$("#admin").prepend('<div class="iphone"> Продукт № '+(t+1)+'<br><tr class="ordered-item" id="cart-"> '+ '<td class="image"> <span class="helper"></span><img src="'+ prod.get("img_sm") + '"></td>' + '<td class="name">'+prod.get("product_name")+ '<span class="mass hidden"> '+prod.get("amount")+'</span>' + '<td class="price"><span class="priceShow">'+prod.get("price")+'</span></td>' + '<td class="quantity"> x '+object.get('quantity')[t]+'</td>' + '<td class="total"> = <span class="totalShow">'+ prod.get("price")*object.get('quantity')[t]+ '</span>'+ '<a href="#" class="cart-change cart-add"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><span class="cart-del-txt"> Добавить</span></a>' + '<a href="#" class="cart-change cart-min"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="cart-del-txt"> Убрать</span></a>' + '<a href="#" class="cart-change cart-del">×</a>' + '</td>'+ '</tr></div>');
   	t=t+1;
   	if(t<max){
   		Rec(t,max,zakaz,results,maxInd,object);
 
   	}
   	else{
-  		$("#admin").prepend('<br><br><br><br>zakaz='+zakaz+"<br>");
+
   		var relation = object.relation("User");
   		var queryU = relation.query();
-  		query.find({
-		  success: function(results) {
-			
-						 
-		  },
-		  error: function(error) {
-		    alert("Error: " + error.code + " " + error.message);
+  		relation.query().find({
+		  success: function(user) {
+		  	$("#admin").prepend('<div class="iphone"><br><br><br><br>Заказ №' +zakaz + '<br>Имя: ' + user[0].get("FirstName") + '<br>' + 'Телефон: ' + user[0].get("phone") + '<br>' +'Улица: ' +  user[0].get("Street") + '<br>' +'Дом: ' +  user[0].get("house") + '<br>' + 'Квартира: ' + user[0].get("flat") + '<br>' + 'Время: ' + '???' + '<br>' + 'Комментарий: ' + user[0].get("comment") + '<br>' + 'Стоимость: ' + "??" + '<br> Оплачено? - '+object.get('paid')+'<br></div><br>');
+		    // console.log(user[0].get("email"));
 		  }
 		});
+
 
   		if((zakaz+1)<maxInd){
   		MegaRec(results,zakaz+1,maxInd);
@@ -72,25 +101,7 @@ function Rec(index,max,zakaz,results,maxInd,object){
 }
 
 
-function MegaRec(results,ind,maxInd){
-	var object = results[ind];
-	// alert(object.id + ' - ' + object.get('playerName'));
-	if (object.get('productsId') == undefined) {
-		MegaRec(results,ind+1,maxInd);
-	  // $("#admin").prepend(object.get('userInfo') + "Оплата: " + object.get('payment') + object.get('html') + "<br><br><br><br><br>");
-	  
-	} else {
-	var num = object.get('quantity').length;
-	console.log('num='+num);
-		Rec(0,num,ind,results,maxInd,object);
-	}
-}
 
-function sleep(miliseconds) {
-   var currentTime = new Date().getTime();
-   while (currentTime + miliseconds >= new Date().getTime()) {
-   }
-}
 
 
 
@@ -111,14 +122,13 @@ function sleep(miliseconds) {
 img {
 	height: 100px;
 }
-.admin-table {
-	border-color: #f00;
-	border-width: 10px;
-	margin-bottom: 50px;
-	/*background-color: #faa;*/
-}
+
 .kop {
 	display: none;
+}
+
+.iphone{
+	background-color: #faa !important;
 }
 
 

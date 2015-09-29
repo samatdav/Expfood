@@ -107,6 +107,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <style type="text/css">
   body {
     padding-top: 150px;
+    font-size: 16px;
   }
 
 
@@ -166,38 +167,52 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
     <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
       <div class="panel-body">
-        На данный момент мы доставляем только в центре Москвы: внутри третьего транспортного кольца. Точную зону доставки Вы можете посмотреть справа на карте (Зеленый круг в центре).
+        На данный момент мы доставляем только в центре Москвы: внутри третьего транспортного кольца. Точную зону доставки Вы можете посмотреть справа на карте.
 
       </div>
       
     </div>
   </div>
 
-<!--   <div class="panel panel-default">
+  <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Как работает ExpressFood?
+          В какое время вы доставляете?
         </a>
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        На сайте нашей компании предоставлен весь спектр товаров. Вы составляете для себя корзину продуктов, при ошибке и изменении решения о покупке того или иного товара, его в любой момент можно удалить. После того, как корзина готова, самое время оплатить заказ, чтоб мы могли передать его курьеру, Вы нажимаете на кнопку оплаты и переходите на страницу, где вам необходимо ввести реквизиты кредитной карты, с которой будет списана сумма заказа. По окончании оплаты, Ваша часть закончена и мы приступаем к работе, менее чем за час, Вам будет доставлен заказ и Вы сможете им насладиться.
+        Мы доставляем с 10 утра до 10 вечера, 7 дней в неделю. Если Вы сделаете заказ в другое время, мы доставим Вам его на следующий день, в выбранное Вами время.
       </div>
     </div>
-  </div> -->
+  </div>
     <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
+    <div class="panel-heading" role="tab" id="headingFour">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+         Сколько стоит доставка?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+        Первая доставка с сайта и с телефона - бесплатна (можно получить до двух бесплатных  доставок). Далее, цена доставки всего 100 рублей за один заказ. Так же у нас есть небольшая наценка на тяжелые товары из расчета +10 рублей за один килограмм так как курьеры носят их вручную. 
+      </div>
+    </div>
+  </div>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwoTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoTwo" aria-expanded="false" aria-controls="collapseTwoTwo">
           Откуда вы берете продукты?
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div id="collapseTwoTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwoTwo">
       <div class="panel-body">
-        Мы покупаем их в магазинах "Перекресток" рядом с Вами. После получения заказа, курьер идет в ближайший к Вам "Перекресток" и покупает требуемые товары. У нас нет складов.
+        В ту же минуту как Вы закажите, наш курьер направится в магазин "Азбука Вкуса". Тщательно выбрав и купив все Ваши товары, он прямиком поедет по Вашему адресу.
       </div>
     </div>
   </div>
@@ -205,30 +220,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-         Когда мы работаем?
+         Как производится оплата?
         </a>
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
-        Ваши заказы принимаются в любое время. Однако, доставляем мы с 9 утра до 11 вечера.
+        Вы можете оплатить свой заказ либо наличными при получении, либо предоплатой по карте. <br> При оплате картой, вы получаете скидку 5%. <br> Заказы выше 3000 рублей оплачиваются только по карте.
+
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingFour">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-         Как оплачивать в ExpressFood?
-        </a>
-      </h4>
-    </div>
-    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-      <div class="panel-body">
-        Вы можете оплатить заказ сразу по карте, либо наличными при получении заказа.
-      </div>
-    </div>
-  </div>
+
 <!--   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingEx">
       <h4 class="panel-title">
@@ -245,7 +248,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       </div>
     </div>
   </div> -->
-  <div class="panel panel-default">
+<!--   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingFive">
       <h4 class="panel-title">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -258,33 +261,34 @@ google.maps.event.addDomListener(window, 'load', initialize);
         Доставка стоит 100 рублей. Однако, за каждые 10кг стоимость доставки увеличивается на 100 рублей.
       </div>
     </div>
-  </div>
-<!--     <div class="panel panel-default">
+  </div> -->
+    <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Насколько дороже у вас, чем в магазине? 
+          Что если в магазине не окажется заказанного товара?
         </a>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        Около 5%. Мы стараемся не зарабатывать с помощью наценки на товар. Однако, мы не можем сделать такие же цена как в магазине, так как банк берет с нас комиссию после Вашей оплаты по карте и цены в магазиноах часто меняются и мы часто покупаем некоторые продукты дороже.
+        Большинство товаров на сайте совпадает с реальным ассортиментов магазинов Азбука. Но если, вдруг, какого-то товара не окажется, то наш курьер позвонит Вам и вежливо уточнит, можно ли купить схожий товар или лучше вернуть Вам деньги
       </div>
     </div>
-  </div> -->
+  </div>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingSix">
       <h4 class="panel-title">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-         Как связаться в случае появления дополнительных вопросов?
+         Как с Вами связаться?
         </a>
       </h4>
     </div>
     <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
       <div class="panel-body">
-        По всем Вашим вопросам, пожалуйста звоните с 12 утра до 24 вечера на номер +7 925 044 74 37 <br>
+        По всем Вашим вопросам, пожалуйста звоните на номер +7 925 044 74 37 <br>
         Или пишите на email expfood@yandex.ru
+
       </div>
     </div>
   </div>
