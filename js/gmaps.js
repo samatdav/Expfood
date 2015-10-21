@@ -86,7 +86,7 @@ function codeAddress() {
       var enteredloc = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
       var centerloc = new google.maps.LatLng(55.753854, 37.623539);
       // console.log(google.maps.geometry.spherical.computeDistanceBetween(enteredloc, centerloc));
-      if( google.maps.geometry.spherical.computeDistanceBetween(enteredloc, centerloc) < 4800 )  {
+      if( google.maps.geometry.spherical.computeDistanceBetween(enteredloc, centerloc) < 6000 )  {
                 $( ".wrongplace" ).css( "display", "none" );
                 okplace = 1;
             }

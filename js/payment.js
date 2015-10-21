@@ -68,7 +68,7 @@ $('#cash').click(function() {
     // }
   },
   error: function(error) {
-    alert("Error: " + error.code + " " + error.message);
+    // alert("Error: " + error.code + " " + error.message);
   }
 });
 
@@ -92,7 +92,7 @@ query.find({
   },
   error: function(error) {
   	console.log("Error here: " + error.code + " " + error.message);
-    alert("Error here: " + error.code + " " + error.message);
+    // alert("Error here: " + error.code + " " + error.message);
   }
 });
 
@@ -131,3 +131,5 @@ if (Number(sessionStorage.cost) > 3000) {
     }
       removeEventListener(listener);
   });
+
+  

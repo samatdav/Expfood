@@ -46,7 +46,7 @@ Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ
 				});
 			  },
 			  error: function(object, error) {
-			  	alert(error);
+			  	// alert(error);
 			    // The object was not retrieved successfully.
 			    // error is a Parse.Error with an error code and message.
 			  }
@@ -182,20 +182,20 @@ var d = new Date();
 var h = d.getHours();
 var m = d.getMinutes();
 
-//10-22
+//10-23
 
-if (h > 8 && h < 21) { // now
+if (h > 8 && h < 22) { // now
 	$(".chooseTime").append("<option>Сегодня до "+(h+1)+":"+m+"</option>");
-	for (h+1; h < 21; h++) {
+	for (h+1; h < 22; h++) {
 		$(".chooseTime").append("<option>Сегодня "+(h+1)+":00"+" - "+(h+2)+":00"+"</option>");
 	}
 } else { //later
-	if (h >= 21) {
-		for (i = 9; i < 21; i++) {
+	if (h >= 22) {
+		for (i = 9; i < 22; i++) {
 			$(".chooseTime").append("<option>Завтра "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
 		}
 	} else {
-		for (i = 9; i < 21; i++) {
+		for (i = 9; i < 22; i++) {
 			$(".chooseTime").append("<option>Сегодня "+(i+1)+":00"+" - "+(i+2)+":00"+"</option>");
 		}
 	}

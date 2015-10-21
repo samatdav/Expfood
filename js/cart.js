@@ -25,14 +25,26 @@ $(document).ready(function() {
 });
 
 
+var setTileWidth = function() {
+	if($("#item-wrap-inner")[0]) {
+		var clientWidth = $("#item-wrap-inner")[0].clientWidth;
+		var noOfTiles = clientWidth / 200; //232
+		//noOfTiles = Math.floor(noOfTiles);
+		if(noOfTiles >= Math.floor(noOfTiles) + 0.75) {
+			noOfTiles = Math.ceil(noOfTiles);
+		} else {
+			noOfTiles = Math.floor(noOfTiles);
+		}
+		$("#item-wrap-inner")[0].className = "col-xs-10 products-wrap " + "tile-" + noOfTiles;
+	}
+};
 
 
 
-// query.find().then(function() {
+$(window).resize(setTileWidth);
+$(window).load(setTileWidth);
+$(setTileWidth);
 
-// }, function(err) {
-  // handleParseError(err);
-// });
 
 var basedCost = 100;
 var totalCost = 0;
@@ -225,7 +237,7 @@ $('#orderBtn').on({
 	    // Execute any logic that should take place if the save fails.
 	    // error is a Parse.Error with an error code and message.
 	    console.log(error.message);
-	    alert('Не удалось создать заказ: ' + error.message);
+	    // alert('Не удалось создать заказ: ' + error.message);
 
 	  }
 	});
@@ -566,6 +578,8 @@ $("#search").keyup(function(event){
 
 
 $(document).on('click', ".glyphicon-search", function(){
-	word = document.getElementById('search').value;
-    search(word);
+    	if (document.getElementById('search').value != ''){
+    		word = document.getElementById('search').value;
+        	search(word);
+    	}
 });

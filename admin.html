@@ -82,7 +82,7 @@ function Rec(index,max,zakaz,results,maxInd,object){
   		var queryU = relation.query();
   		relation.query().find({
 		  success: function(user) {
-		  	$("#admin").prepend('<div class="iphone"><br><br><br><br>Заказ №' +zakaz + '<br>Имя: ' + user[0].get("FirstName") + '<br>' + 'Телефон: ' + user[0].get("phone") + '<br>' +'Улица: ' +  user[0].get("Street") + '<br>' +'Дом: ' +  user[0].get("house") + '<br>' + 'Квартира: ' + user[0].get("flat") + '<br>' + 'Время: ' + '???' + '<br>' + 'Комментарий: ' + user[0].get("comment") + '<br>' + 'Стоимость: ' + "??" + '<br> Оплачено? - '+object.get('paid')+'<br></div><br>');
+		  	$("#admin").prepend('<div class="iphone"><br><br><br><br>Заказ №' +zakaz + '<br>Имя: ' + user[0].get("FirstName") + '<br>' + 'Телефон: ' + user[0].get("phone") + '<br>' +'Улица: ' +  user[0].get("Street") + '<br>' +'Дом: ' +  user[0].get("house") + '<br>' + 'Квартира: ' + user[0].get("flat") + '<br>' + 'Время: ' + (object.get('createdAt').getHours() + 1) + ':'+object.get('createdAt').getMinutes()+'<br>' + 'Комментарий: ' + object.get('notes') + '<br>' + 'Стоимость: ' +object.get('sum') + '<br> Оплачено? - '+object.get('paid')+'<br></div><br>');
 		    // console.log(user[0].get("email"));
 		  }
 		});

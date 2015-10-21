@@ -25,7 +25,7 @@ $(document).on('click', "#loginButton", function(){
 		  	// }, 5000);
 		  },
 		  error: function(user, error) {
-		    alert("Error: " + error.code + " " + error.message);
+		    // alert("Error: " + error.code + " " + error.message);
 		  }
 		});
 	}
@@ -39,7 +39,7 @@ $(document).on('click', "#loginButton", function(){
 		  },
 		  error: function(user, error) {
 		    console.log(error);
-		    alert('err' + error);
+		    // alert('err' + error);
 		    
 		  }
 		});
