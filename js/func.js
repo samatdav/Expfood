@@ -1,5 +1,5 @@
 json = json.sort(function(a, b) {
-    return parseFloat((new Date(a.createdAt)).getTime()) - parseFloat((new Date(b.createdAt)).getTime());
+    return parseFloat((new Date(a.updatedAt)).getTime()) - parseFloat((new Date(b.updatedAt)).getTime());
 });
 
 var fruits = '';
@@ -46,11 +46,11 @@ for (i = 0; i < json.length; i++) {
     
     if (Number(sessionStorage[json[i].objectId]) > 0) {
     
-    window[json[i].category]  += '<div class="product-wrap"> <div class="product" id="' + json[i].objectId + '"> <a href="#" data-toggle="modal" data-target="#idt' + json[i].objectId + '"> <div class="product_img"> <span class="helper"></span> <img class="" src="' + json[i].img_sm + '"> </a> </div> <button class="item_count visible btn count btn-dark-blue btn-small-med btn-trans">'+sessionStorage[json[i].objectId]+'</button> <div class="action"> <div> <button href="javascript:void(0)" class="reduce_count visible btn minus btn-dark-blue btn-small-med btn-trans">-</button> <button href="javascript:void(0)" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button> </div> </div> <div class="desc"> <div class="name"> <p class="product-name">' + json[i].product_name + '</p> </div>  <div class="price"> <p class="product-price">' + Math.floor(json[i].price*1.1 + json[i].weight*0.01) + '<span class="kop">00</span></p> </div> <div class="product-howmuch">'+ json[i].amount +' </div></div> </div> </div>';
+    window[json[i].category]  += '<div class="product-wrap"> <div class="product" id="' + json[i].objectId + '"> <a href="#" data-toggle="modal" data-target="#idt' + json[i].objectId + '"> <div class="product_img"> <span class="helper"></span> <img class="" src="' + json[i].img_sm + '"> </a> </div> <button class="item_count visible btn count btn-dark-blue btn-small-med btn-trans">'+sessionStorage[json[i].objectId]+'</button> <div class="action"> <div> <button href="javascript:void(0)" class="reduce_count visible btn minus btn-dark-blue btn-small-med btn-trans">-</button> <button href="javascript:void(0)" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button> </div> </div> <div class="desc"> <div class="name"> <p class="product-name">' + json[i].product_name + '</p> </div>  <div class="price"> <p class="product-price">' + json[i].price + '<span class="kop">00</span></p> </div> <div class="product-howmuch">'+ json[i].amount +' </div></div> </div> </div>';
 
     } else {
         // console.log('2');
-    window[json[i].category]  += '<div class="product-wrap"> <div class="product" id="' + json[i].objectId + '">  <a href="#" data-toggle="modal" data-target="#idt' + json[i].objectId + '"> <div class="product_img"> <span class="helper"></span> <img class="" src="' + json[i].img_sm + '">  </div> </a><button class="item_count hidden btn count btn-dark-blue btn-small-med btn-trans">'+sessionStorage[json[i].objectId]+'</button> <div class="action"> <div> <button href="javascript:void(0)" class="reduce_count hidden btn minus btn-dark-blue btn-small-med btn-trans">-</button> <button href="javascript:void(0)" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button> </div> </div> <div class="desc"> <div class="name"> <p class="product-name">' + json[i].product_name + '</p> </div>  <div class="price"> <p class="product-price">' + Math.floor(json[i].price*1.1 + json[i].weight*0.01) + '<span class="kop">00</span></p> </div><div class="product-howmuch">'+ json[i].amount +' </div> </div> </div> </div>';
+    window[json[i].category]  += '<div class="product-wrap"> <div class="product" id="' + json[i].objectId + '">  <a href="#" data-toggle="modal" data-target="#idt' + json[i].objectId + '"> <div class="product_img"> <span class="helper"></span> <img class="" src="' + json[i].img_sm + '">  </div> </a><button class="item_count hidden btn count btn-dark-blue btn-small-med btn-trans">'+sessionStorage[json[i].objectId]+'</button> <div class="action"> <div> <button href="javascript:void(0)" class="reduce_count hidden btn minus btn-dark-blue btn-small-med btn-trans">-</button> <button href="javascript:void(0)" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button> </div> </div> <div class="desc"> <div class="name"> <p class="product-name">' + json[i].product_name + '</p> </div>  <div class="price"> <p class="product-price">' + json[i].price + '<span class="kop">00</span></p> </div><div class="product-howmuch">'+ json[i].amount +' </div> </div> </div> </div>';
 
     }
 
@@ -58,20 +58,7 @@ for (i = 0; i < json.length; i++) {
 }
 
 
-for (i = 0; i < json.length; i++) { 
 
-    consist = '';
-    ctitles = json[i].ctitles;
-    cvalues = json[i].cvalues;
-
-    for (x = 0; x < ctitles.length; x++) { 
-        consist+=('<div class="product_card_prop_item mb5"> <div class="product_card_prop_item_title">'+ctitles[x]+'</div> <div class="product_card_prop_item_value">'+cvalues[x]+'</div> <div class="clear"></div> </div>');
-    }
-    // window[json[i].category] += '1';
-    window[json[i].category]  += '<div class="modal fade bs-example-modal-lg" id="idt' + json[i].objectId + '" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"> <div class="modal-dialog modal-lg"> <div class="modal-content row"> <div class="row"> <div class="popup-image";> <span class="popup-helper"></span> <img class="popimg" src="' + json[i].img_sm + '"> </div> <div class="popup-name"> <p class="popup-title" id="myModalLabel">' + json[i].product_name + '</p> <div class="popup-price"> ' + Math.floor(json[i].price*1.1 + json[i].weight*0.01) + '<span class="kop">00</span> <span class="popup-rub">'+num2word(Math.floor(json[i].price),words)+'</span> </div> <div class="popup-mass"> '+ json[i].amount +'</div> </div> </div> <hr> <div class="row"> <div class="popup-description"> <strong>Описание</strong> <br> <div class="description-text">' + json[i].description + '</div> </div> <div class="product_card_props f32">'+ consist +' </div> </div> </div> </div> </div>';
-    // console.log(consist);
-
-}
 
 
 
