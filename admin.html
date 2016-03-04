@@ -16,12 +16,13 @@
 <script type="text/javascript">
 n = 0;
 Parse.initialize("mmcrSN69TR6IR6e6uo2pzlhpR2amZNkHl4b0GVh1", "ALR6Z7SnB2mWr2SBkZ9cnQX8dgqJph0F47b1aPjl");
-
+// var xxx;
 var Orders = Parse.Object.extend("Orders");
 var query = new Parse.Query(Orders);
 // query.equalTo("productsId", "Dp8yQZjG7k");
 query.find({
   success: function(results) {
+    // xxx = results
     // alert("Successfully retrieved " + results.length + " orders.");	    
 				MegaRec(results,0,results.length);
 				 
@@ -38,9 +39,9 @@ function MegaRec(results,ind,maxInd){
 	var object = results[ind];
 	// alert(object.id + ' - ' + object.get('playerName'));
 	if (object.get('productsId') == undefined) {
-		MegaRec(results,ind+1,maxInd);
+		
 	  $("#admin").prepend(object.get('userInfo') + "Оплата: " + object.get('payment') + object.get('html') + "<br><br><br><br><br>");
-	  
+	  MegaRec(results,ind+1,maxInd);
 	} else {
 	var num = object.get('quantity').length;
 	console.log('num='+num);

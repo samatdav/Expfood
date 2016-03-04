@@ -327,12 +327,12 @@ function updateClock() {
 	$("#cart_time_b").html(h+':'+ (m<10?'0':'') + m);
 	// $(".order-time").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
 	// если верный работает с 9 до 22
-	if (h > 21){
+	if (h > 22){
 		$("#cart_time_b").html('11:00');
 		$("#delivery_day").html('Доставим завтра до 11:00');
 
 	} 
-	if (h < 10){
+	if (h < 11){
 		$("#cart_time_b").html('11:00');
 	}
 	
@@ -489,7 +489,7 @@ $(document).scroll(function() {
 //     // alert($(this).attr('id'));
 //     alert("sadf");
 // });
-
+$(document).ready(function() {
 	$(document).on('click', ".product", function(){
 	  src = $('#idt' + $(this).attr('id')).find('img').attr('src');
 	  newsrc = src.replace("table", "big");
@@ -497,7 +497,7 @@ $(document).scroll(function() {
 	  	src: newsrc,
 	  });
 	});
-
+});
 
 $(document).on('click', ".product_card_prop_item_value", function(e){
 // $('.product_card_prop_item_value').find('a').click(function(e) { 
